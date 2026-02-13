@@ -1,0 +1,18 @@
+{
+  "name": "hooklearn",
+  "version": "1.0.0",
+  "description": "启动游戏，执行下面操作",
+  "main": "agent.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "frida-il2cpp-bridge": "^0.12.2"
+  }
+}
