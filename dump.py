@@ -61,7 +61,8 @@ def main():
 
     script = session.create_script(script_code)
     script.on("message", on_message)
-    script.load()
+    # script.load()
+    script.load(timeout=130)
 
     print("[*] Running... Press Ctrl+C to stop.")
     sys.stdin.read()

@@ -63,6 +63,8 @@ function setTileValue(tilePtr, left, right) {
  * 完全接管
  * ==========================
  */
+
+
 Interceptor.replace(
     addr,
     new NativeCallback(function(mode, aiPlayer, table) {

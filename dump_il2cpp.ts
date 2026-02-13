@@ -2,54 +2,77 @@ import "frida-il2cpp-bridge";
 
 Il2Cpp.perform(() => {
 
-    const image = Il2Cpp.domain.assembly("Assembly-CSharp").image;
-
-    const exported = new Set<string>();
     const result: any[] = [];
+    const exported = new Set<string>();
 
-    image.classes.forEach(c => {
+    const targetAssemblies = [
+//         "Assembly-CSharp"
+//         "UnityEngine.CoreModule"
+//         "UnityEngine.UI"
+//          "System"
+         "mscorlib"
+    ];
 
-        c.methods.forEach(m => {
+    targetAssemblies.forEach(name => {
 
-            if (!m.virtualAddress) return;
+        try {
+            const assembly = Il2Cpp.domain.assembly(name);
+            if (!assembly) return;
 
-            const va = m.virtualAddress as NativePointer;
+            const image = assembly.image;
 
-            let module;
-            try {
-                module = Process.findModuleByAddress(va);
-            } catch {
-                return;
-            }
+            image.classes.forEach(c => {
 
-            if (!module) return;
+                c.methods.forEach(m => {
 
-            const key = va.toString();
-            if (exported.has(key)) return;
-            exported.add(key);
+                    if (!m.virtualAddress) return;
 
-            const rva = va.sub(module.base);
+                    const va = m.virtualAddress as NativePointer;
 
-            const cleanClass = c.name.replace(/[^a-zA-Z0-9_]/g, "_");
-            const cleanMethod = m.name.replace(/[^a-zA-Z0-9_]/g, "_");
+                    let module;
+                    try {
+                        module = Process.findModuleByAddress(va);
+                    } catch {
+                        return;
+                    }
 
-            const newName = `${cleanClass}__${cleanMethod}`;
+                    if (!module) return;
 
-            result.push({
-                module: module.name,
-                namespace: c.namespace,
-                class: c.name,
-                method: m.name,
-                name: newName,
-                rva: parseInt(rva.toString(), 16)
+                    const key = va.toString();
+                    if (exported.has(key)) return;
+                    exported.add(key);
+
+                    const rva = va.sub(module.base);
+
+                    const cleanClass = c.name.replace(/[^a-zA-Z0-9_]/g, "_");
+                    const cleanMethod = m.name.replace(/[^a-zA-Z0-9_]/g, "_");
+
+                    const newName = `${cleanClass}__${cleanMethod}`;
+
+                    result.push({
+                        module: module.name,
+                        namespace: c.namespace,
+                        class: c.name,
+                        method: m.name,
+                        name: newName,
+                        rva: parseInt(rva.toString(), 16)
+                    });
+
+                });
+
             });
 
-        });
+        } catch (e) {
+            console.log("[!] Error loading assembly:", name);
+        }
 
     });
+
+    console.log("[+] Dump finished. Total:", result.length);
 
     send({
         type: "il2cpp_dump",
         data: result
     });
+
 });

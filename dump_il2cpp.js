@@ -1,51 +1,75 @@
 📦
-1458 /dump_il2cpp.js.map
-1293 /dump_il2cpp.js
+2127 /splitDump.js.map
+2552 /splitDump.js
 158176 /node_modules/frida-il2cpp-bridge/dist/index.js
 ↻ frida-il2cpp-bridge
 ✄
-{"version":3,"file":"dump_il2cpp.js","sourceRoot":"D:/Hook/HookLearn/","sources":["dump_il2cpp.ts"],"names":[],"mappings":"AAAA,OAAO,qBAAqB,CAAC;AAE7B,MAAM,CAAC,OAAO,CAAC,GAAG,EAAE;IAEhB,MAAM,KAAK,GAAG,MAAM,CAAC,MAAM,CAAC,QAAQ,CAAC,iBAAiB,CAAC,CAAC,KAAK,CAAC;IAE9D,MAAM,QAAQ,GAAG,IAAI,GAAG,EAAU,CAAC;IACnC,MAAM,MAAM,GAAU,EAAE,CAAC;IAEzB,KAAK,CAAC,OAAO,CAAC,OAAO,CAAC,CAAC,CAAC,EAAE;QAEtB,CAAC,CAAC,OAAO,CAAC,OAAO,CAAC,CAAC,CAAC,EAAE;YAElB,IAAI,CAAC,CAAC,CAAC,cAAc;gBAAE,OAAO;YAE9B,MAAM,EAAE,GAAG,CAAC,CAAC,cAA+B,CAAC;YAE7C,IAAI,MAAM,CAAC;YACX,IAAI;gBACA,MAAM,GAAG,OAAO,CAAC,mBAAmB,CAAC,EAAE,CAAC,CAAC;aAC5C;YAAC,MAAM;gBACJ,OAAO;aACV;YAED,IAAI,CAAC,MAAM;gBAAE,OAAO;YAEpB,MAAM,GAAG,GAAG,EAAE,CAAC,QAAQ,EAAE,CAAC;YAC1B,IAAI,QAAQ,CAAC,GAAG,CAAC,GAAG,CAAC;gBAAE,OAAO;YAC9B,QAAQ,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC;YAElB,MAAM,GAAG,GAAG,EAAE,CAAC,GAAG,CAAC,MAAM,CAAC,IAAI,CAAC,CAAC;YAEhC,MAAM,UAAU,GAAG,CAAC,CAAC,IAAI,CAAC,OAAO,CAAC,gBAAgB,EAAE,GAAG,CAAC,CAAC;YACzD,MAAM,WAAW,GAAG,CAAC,CAAC,IAAI,CAAC,OAAO,CAAC,gBAAgB,EAAE,GAAG,CAAC,CAAC;YAE1D,MAAM,OAAO,GAAG,GAAG,UAAU,KAAK,WAAW,EAAE,CAAC;YAEhD,MAAM,CAAC,IAAI,CAAC;gBACR,MAAM,EAAE,MAAM,CAAC,IAAI;gBACnB,SAAS,EAAE,CAAC,CAAC,SAAS;gBACtB,KAAK,EAAE,CAAC,CAAC,IAAI;gBACb,MAAM,EAAE,CAAC,CAAC,IAAI;gBACd,IAAI,EAAE,OAAO;gBACb,GAAG,EAAE,QAAQ,CAAC,GAAG,CAAC,QAAQ,EAAE,EAAE,EAAE,CAAC;aACpC,CAAC,CAAC;QAEP,CAAC,CAAC,CAAC;IAEP,CAAC,CAAC,CAAC;IAEH,IAAI,CAAC;QACD,IAAI,EAAE,aAAa;QACnB,IAAI,EAAE,MAAM;KACf,CAAC,CAAC;AACP,CAAC,CAAC,CAAC"}
+{"version":3,"file":"splitDump.js","sourceRoot":"D:/Hook/HookLearn/","sources":["splitDump.ts"],"names":[],"mappings":"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"}
 ✄
 import "frida-il2cpp-bridge";
-Il2Cpp.perform(() => {
-    const image = Il2Cpp.domain.assembly("Assembly-CSharp").image;
-    const exported = new Set();
-    const result = [];
-    image.classes.forEach(c => {
-        c.methods.forEach(m => {
-            if (!m.virtualAddress)
-                return;
-            const va = m.virtualAddress;
-            let module;
+setImmediate(() => {
+    Il2Cpp.perform(() => {
+        console.log("[+] IL2CPP ready");
+        const exported = new Set();
+        const targetAssemblies = [
+            "mscorlib" // 只 dump 游戏逻辑
+        ];
+        targetAssemblies.forEach(name => {
             try {
-                module = Process.findModuleByAddress(va);
+                const assembly = Il2Cpp.domain.assembly(name);
+                if (!assembly) {
+                    console.log("[-] Assembly not found:", name);
+                    return;
+                }
+                const image = assembly.image;
+                console.log("[+] Dumping:", name);
+                image.classes.forEach(c => {
+                    const batch = [];
+                    c.methods.forEach(m => {
+                        if (!m.virtualAddress)
+                            return;
+                        const va = m.virtualAddress;
+                        let module;
+                        try {
+                            module = Process.findModuleByAddress(va);
+                        }
+                        catch {
+                            return;
+                        }
+                        if (!module)
+                            return;
+                        // 只导出 libil2cpp.so 里的
+                        if (module.name.indexOf("libil2cpp") === -1)
+                            return;
+                        const key = va.toString();
+                        if (exported.has(key))
+                            return;
+                        exported.add(key);
+                        const rva = va.sub(module.base);
+                        const cleanClass = c.name.replace(/[^a-zA-Z0-9_]/g, "_");
+                        const cleanMethod = m.name.replace(/[^a-zA-Z0-9_]/g, "_");
+                        batch.push({
+                            namespace: c.namespace,
+                            class: c.name,
+                            method: m.name,
+                            name: `${cleanClass}__${cleanMethod}`,
+                            rva: parseInt(rva.toString(), 16)
+                        });
+                    });
+                    if (batch.length > 0) {
+                        send({
+                            type: "batch",
+                            data: batch
+                        });
+                    }
+                });
             }
-            catch {
-                return;
+            catch (e) {
+                console.log("[!] Error:", name);
             }
-            if (!module)
-                return;
-            const key = va.toString();
-            if (exported.has(key))
-                return;
-            exported.add(key);
-            const rva = va.sub(module.base);
-            const cleanClass = c.name.replace(/[^a-zA-Z0-9_]/g, "_");
-            const cleanMethod = m.name.replace(/[^a-zA-Z0-9_]/g, "_");
-            const newName = `${cleanClass}__${cleanMethod}`;
-            result.push({
-                module: module.name,
-                namespace: c.namespace,
-                class: c.name,
-                method: m.name,
-                name: newName,
-                rva: parseInt(rva.toString(), 16)
-            });
         });
-    });
-    send({
-        type: "il2cpp_dump",
-        data: result
+        send({ type: "done" });
+        console.log("[+] Dump finished");
     });
 });
 ✄
