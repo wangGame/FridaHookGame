@@ -9,12 +9,15 @@ filename = "../resources/jiacard/PrintClassInfo.js"
 filename = "../resources/temp/Il2cppAddr.js"
 filename = "../resources/temp/Il2cppAbout.js"
 filename = "../resources/temp/GameInvokeMethod.js"
-filename = "../resources/temp/GameClassAllMethod.js"
+filename = "../dump_il2cpp.js"
+# filename = "../resources/temp/GameClassAllMethod.js"
+
+filename = "../resources/temp/prefer.js"
 
 # filename = "../resources/temp/Tween.js"
 
-apkName = "com.playvalve.dominoes"
-apkName = "Jigsawcard"
+apkName = "Domino Legends"
+# apkName = "Jigsawcard"
 
 # filename = "../resources/js/activity/PrintAllMethod.js"
 def on_message(message, data):  # js中执行send函数后要回调的函数

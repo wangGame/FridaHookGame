@@ -108,7 +108,7 @@ data = bytes(result["data"])
 with open(SAVE_FILE, "wb") as f:
     f.write(data)
 
-print("[+] dump success:", SAVE_FILE)
+print("[+] dump1 success:", SAVE_FILE)
 print("[+] DONE")
 
 time.sleep(2)

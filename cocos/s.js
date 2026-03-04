@@ -1,0 +1,72 @@
+--
+--
+--var dumped = {};
+--var index = 0;
+--var MAX_SIZE = 300000;
+--var MIN_SIZE = 100;
+--
+--function isValidJS(str) {
+--    if (!str) return false;
+--    if (str.length < MIN_SIZE) return false;
+--    if (str.length > MAX_SIZE) return false;
+--
+--    if (str.indexOf("function") === -1 &&
+--        str.indexOf("var ") === -1) {
+--        return false;
+--    }
+--
+--    return true;
+--}
+--
+--function dumpMemory() {
+--
+--    send({ type: "log", data: "Start scanning memory..." });
+--
+--    var ranges = Process.enumerateRangesSync({
+--        protection: "r--",
+--        coalesce: true
+--    });
+--
+--    for (var i = 0; i < ranges.length; i++) {
+--
+--        var range = ranges[i];
+--
+--        try {
+--
+--            Memory.scanSync(range.base, range.size,
+--                "66 75 6e 63 74 69 6f 6e"
+--            ).forEach(function (match) {
+--
+--                try {
+--
+--                    var str = Memory.readUtf8String(match.address);
+--
+--                    if (!isValidJS(str))
+--                        return;
+--
+--                    var hash = str.substring(0, 50);
+--                    if (dumped[hash])
+--                        return;
+--
+--                    dumped[hash] = true;
+--
+--                    var fileName = "dump_" + (index++) + ".js";
+--
+--                    send({
+--                        type: "dump",
+--                        file: fileName,
+--                        data: str
+--                    });
+--
+--                } catch (e) {}
+--            });
+--
+--        } catch (e) {}
+--    }
+--
+--    send({ type: "log", data: "Scan complete." });
+--}
+--
+--setTimeout(function () {
+--    dumpMemory();
+--}, 3000);

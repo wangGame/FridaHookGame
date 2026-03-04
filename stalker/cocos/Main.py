@@ -2,7 +2,10 @@ import frida
 import sys
 import time
 
-PACKAGE_NAME = "jigsawcard"
+jsPath = "cocosjs.js"
+jsPath = "PrintVTable.js"
+
+PACKAGE_NAME = "经典多米诺"
 
 def on_message(message, data):
     print(message)
@@ -12,16 +15,17 @@ device = frida.get_usb_device(timeout=5)
 print("[*] Waiting for app to start...")
 
 # 等待游戏运行
-while True:
-    try:
-        session = device.attach(PACKAGE_NAME)
-        break
-    except frida.ProcessNotFoundError:
-        time.sleep(1)
+# while True:
+#     try:
+#
+#         break
+#     except frida.ProcessNotFoundError:
+#         time.sleep(1)
 
+session = device.attach(PACKAGE_NAME)
 print("[*] Attached!")
 
-with open("resources/temp/RunMethod.js", "r", encoding="utf-8") as f:
+with open(jsPath, "r", encoding="utf-8") as f:
     script_code = f.read()
 
 script = session.create_script(script_code)

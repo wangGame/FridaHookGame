@@ -1,77 +1,514 @@
 📦
-2127 /splitDump.js.map
-2552 /splitDump.js
+7503 /dump_il2cpp.js.map
+16388 /dump_il2cpp.js
 158176 /node_modules/frida-il2cpp-bridge/dist/index.js
 ↻ frida-il2cpp-bridge
 ✄
-{"version":3,"file":"splitDump.js","sourceRoot":"D:/Hook/HookLearn/","sources":["splitDump.ts"],"names":[],"mappings":"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"}
+{"version":3,"file":"dump_il2cpp.js","sourceRoot":"D:/Hook/HookLearn/","sources":["dump_il2cpp.ts"],"names":[],"mappings":"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"}
 ✄
 import "frida-il2cpp-bridge";
-setImmediate(() => {
-    Il2Cpp.perform(() => {
-        console.log("[+] IL2CPP ready");
-        const exported = new Set();
-        const targetAssemblies = [
-            "mscorlib" // 只 dump 游戏逻辑
-        ];
-        targetAssemblies.forEach(name => {
-            try {
-                const assembly = Il2Cpp.domain.assembly(name);
-                if (!assembly) {
-                    console.log("[-] Assembly not found:", name);
-                    return;
-                }
-                const image = assembly.image;
-                console.log("[+] Dumping:", name);
-                image.classes.forEach(c => {
-                    const batch = [];
-                    c.methods.forEach(m => {
-                        if (!m.virtualAddress)
-                            return;
-                        const va = m.virtualAddress;
-                        let module;
-                        try {
-                            module = Process.findModuleByAddress(va);
-                        }
-                        catch {
-                            return;
-                        }
-                        if (!module)
-                            return;
-                        // 只导出 libil2cpp.so 里的
-                        if (module.name.indexOf("libil2cpp") === -1)
-                            return;
-                        const key = va.toString();
-                        if (exported.has(key))
-                            return;
-                        exported.add(key);
-                        const rva = va.sub(module.base);
-                        const cleanClass = c.name.replace(/[^a-zA-Z0-9_]/g, "_");
-                        const cleanMethod = m.name.replace(/[^a-zA-Z0-9_]/g, "_");
-                        batch.push({
-                            namespace: c.namespace,
-                            class: c.name,
-                            method: m.name,
-                            name: `${cleanClass}__${cleanMethod}`,
-                            rva: parseInt(rva.toString(), 16)
-                        });
-                    });
-                    if (batch.length > 0) {
-                        send({
-                            type: "batch",
-                            data: batch
-                        });
+Il2Cpp.perform(() => {
+    const result = [];
+    const exported = new Set();
+    const targetAssemblies = [
+        //         "Assembly-CSharp"
+        "UnityEngine.CoreModule"
+        // "Sirenix.OdinInspector.Attributes"
+        //         "UnityEngine.UI"
+        //          "System"
+        //          "mscorlib"
+    ];
+    targetAssemblies.forEach(name => {
+        try {
+            const assembly = Il2Cpp.domain.assembly(name);
+            if (!assembly)
+                return;
+            const image = assembly.image;
+            image.classes.forEach(c => {
+                c.methods.forEach(m => {
+                    if (!m.virtualAddress)
+                        return;
+                    const va = m.virtualAddress;
+                    let module;
+                    try {
+                        module = Process.findModuleByAddress(va);
                     }
+                    catch {
+                        return;
+                    }
+                    if (!module)
+                        return;
+                    const key = va.toString();
+                    if (exported.has(key))
+                        return;
+                    exported.add(key);
+                    const rva = va.sub(module.base);
+                    const cleanClass = c.name.replace(/[^a-zA-Z0-9_]/g, "_");
+                    const cleanMethod = m.name.replace(/[^a-zA-Z0-9_]/g, "_");
+                    const newName = `${cleanClass}__${cleanMethod}`;
+                    result.push({
+                        module: module.name,
+                        namespace: c.namespace,
+                        class: c.name,
+                        method: m.name,
+                        name: newName,
+                        rva: parseInt(rva.toString(), 16)
+                    });
                 });
-            }
-            catch (e) {
-                console.log("[!] Error:", name);
-            }
-        });
-        send({ type: "done" });
-        console.log("[+] Dump finished");
+            });
+        }
+        catch (e) {
+            console.log("[!] Error loading assembly:", name);
+        }
+    });
+    console.log("[+] Dump finished. Total:", result.length);
+    send({
+        type: "il2cpp_dump",
+        data: result
     });
 });
+Il2Cpp.perform(() => {
+    const image = Il2Cpp.domain.assembly("Assembly-CSharp").image;
+    image.classes.forEach(c => {
+        c.methods.forEach(m => {
+            console.log(c.name, m.name, "VA:", m.virtualAddress, "RVA:", m.relativeVirtualAddress);
+        });
+    });
+});
+// // 需要和 frida-il2cpp-bridge.js 放在同目录
+// // 用法: frida -H 127.0.0.1:1234 -F -l trace_il2cpp.js
+//
+// 'use strict';
+//
+// import "frida-il2cpp-bridge";
+//
+// //
+// //
+// // //
+// // // import "frida-il2cpp-bridge";
+// // //
+// // Il2Cpp.perform(() => {
+// //
+// //     const Game = Il2Cpp.domain
+// //         .assembly("Assembly-CSharp")
+// //         .image
+// //         .class("Game");
+// //
+// //     const method = Game.method("NotifyEndDrag");
+// //
+// //     console.log("[+] Hooking Game::NotifyEndDrag");
+// //
+// //     method.implementation = function (...args: any[]) {
+// //
+// //         const link = args[0];          // ⚠ 不要 as NativePointer
+// //         const isValidMove = args[1] as boolean;
+// //
+// //         console.log("======== NotifyEndDrag ========");
+// //         console.log("isValidMove =", isValidMove);
+// //
+// //         try {
+// //
+// //             if (link) {
+// //
+// //                 // link 本身就是 Il2Cpp.Object
+// //                 const hashSetObj = link;
+// //
+// //                 const enumerator = hashSetObj
+// //                     .method("GetEnumerator")
+// //                     .invoke();
+// //
+// //                 while (enumerator.method("MoveNext").invoke()) {
+// //
+// //                     const current =
+// //                         enumerator.method("get_Current").invoke();
+// //
+// //                     console.log("Element:", current);
+// //                 }
+// //             }
+// //
+// //         } catch (e) {
+// //             console.log("[!] HashSet read error:", e);
+// //         }
+// //
+// //         return this.method("NotifyEndDrag").invoke(...args);
+// //     };
+// //
+// //     console.log("[+] Hook Installed");
+// // });
+//
+//
+// // import "frida-il2cpp-bridge";
+// //
+// // Il2Cpp.perform(() => {
+// //
+// //     const Game = Il2Cpp.domain
+// //         .assembly("Assembly-CSharp")
+// //         .image
+// //         .class("Game");
+// //
+// //     console.log("[+] Tracing all Game methods");
+// //
+// //     Il2Cpp.trace(true)
+// //         .classes(Game)
+// //         .and()
+// //         .attach();
+// // });
+//
+// //
+// // import "frida-il2cpp-bridge";
+// //
+// // Il2Cpp.perform(() => {
+// //
+// //     const Game = Il2Cpp.domain
+// //         .assembly("Assembly-CSharp")
+// //         .image
+// //         .class("Game");
+// //
+// //     const method = Game.method("NotifyEndDrag");
+// //
+// //     const addr = method.virtualAddress;
+// //
+// //     console.log("Function address:", addr);
+// //
+// //     const size = 0x200; // 读取 0x200 字节汇编
+// //
+// //     console.log(
+// //         Instruction.parse(addr).toString()
+// //     );
+// //
+// //     console.log(
+// //         Instruction.parse(addr.add(4)).toString()
+// //     );
+// //
+// // });
+// //
+//
+// //
+// // import "frida-il2cpp-bridge";
+// //
+// // Il2Cpp.perform(() => {
+// //
+// //     const Game = Il2Cpp.domain
+// //         .assembly("Assembly-CSharp")
+// //         .image
+// //         .class("Game");
+// //
+// //     const method = Game.method("NotifyEndDrag");
+// //     const target = method.virtualAddress;
+// //
+// //     console.log("Hooking at:", target);
+// //
+// //     Interceptor.attach(target, {
+// //         onEnter(args) {
+// //
+// //             console.log("=== Enter NotifyEndDrag ===");
+// //
+// //             Stalker.follow(this.threadId, {
+// //                 events: {
+// //                     call: true,
+// //                     ret: false,
+// //                     exec: true,
+// //                     block: false,
+// //                     compile: false
+// //                 },
+// //                 onReceive(events) {
+// //                     const parsed = Stalker.parse(events);
+// //
+// //                     parsed.forEach(event => {
+// //                         if (event.type === "exec") {
+// //                             try {
+// //                                 const ins = Instruction.parse(event.address);
+// //                                 console.log(event.address + "  " + ins.toString());
+// //                             } catch {}
+// //                         }
+// //
+// //                         if (event.type === "call") {
+// //                             console.log("CALL -> " + event.target);
+// //                         }
+// //                     });
+// //                 }
+// //             });
+// //         },
+// //
+// //         onLeave(retval) {
+// //             console.log("=== Leave NotifyEndDrag ===");
+// //             Stalker.unfollow(this.threadId);
+// //             Stalker.garbageCollect();
+// //         }
+// //     });
+// //
+// // });
+//
+//
+//
+// import "frida-il2cpp-bridge";
+//
+// Il2Cpp.perform(() => {
+//
+//     const Game = Il2Cpp.domain
+//         .assembly("Assembly-CSharp")
+//         .image
+//         .class("Game");
+//
+//     const method = Game.method("NotifyEndDrag");
+//     const target = method.virtualAddress;
+//
+//     console.log("Hooking at:", target);
+//
+//     Interceptor.attach(target, {
+//
+//     onEnter(args) {
+//
+//         Stalker.follow(this.threadId, {
+//             events: {
+//                 call: true,
+//                 exec: true
+//             },
+//
+//             onReceive(rawEvents) {
+//
+//                 const events = Stalker.parse(rawEvents);
+//
+//                 for (let i = 0; i < events.length; i++) {
+//
+//                     const ev: any = events[i];
+//
+//                     const type = ev[0];
+//
+//                     if (type === "exec") {
+//                         const addr = ev[1];
+//                         try {
+//                             const ins = Instruction.parse(addr);
+//                             console.log(addr + "  " + ins);
+//                         } catch {}
+//                     }
+//
+//                     if (type === "call") {
+//                         console.log("CALL -> " + ev[1]);
+//                     }
+//                 }
+//             }
+//         });
+//     },
+//
+//     onLeave() {
+//         Stalker.unfollow(this.threadId);
+//         Stalker.garbageCollect();
+//     }
+// });
+//
+//
+// });
+//
+//
+// // import "frida-il2cpp-bridge";
+// // interface CpuContext {
+// //     r0: NativePointer;
+// //     r1: NativePointer;
+// //     r2: NativePointer;
+// //     r3: NativePointer;
+// //     r4: NativePointer;
+// //     r5: NativePointer;
+// //     r6: NativePointer;
+// //     r7: NativePointer;
+// //     r8: NativePointer;
+// //     r9: NativePointer;
+// //     r10: NativePointer;
+// //     r11: NativePointer;
+// //     r12: NativePointer;
+// //     sp: NativePointer;
+// //     lr: NativePointer;
+// //     pc: NativePointer;
+// // }
+// // import "frida-il2cpp-bridge";
+// //
+// // Il2Cpp.perform(() => {
+// //
+// //     const loopAddr = ptr("0x845efdb8");
+// //
+// //     Interceptor.attach(loopAddr, {
+// //
+// //         onEnter(args) {
+// //
+// //             const ctx: any = this.context;   // ⚠ any 绕过 TS 类型检查
+// //
+// //             const r4 = ctx.r4;   // 循环变量 i
+// //             const r6 = ctx.r6;   // List对象
+// //
+// //             try {
+// //                 const count = r6.add(4).readU32();
+// //                 const arrayPtr = r6.readPointer();
+// //                 const element = arrayPtr.add(r4.toInt32() * 4).readPointer();
+// //
+// //                 console.log("---- Loop State ----");
+// //                 console.log("i =", r4);
+// //                 console.log("count =", count);
+// //                 console.log("arrayPtr =", arrayPtr);
+// //                 console.log("element =", element);
+// //                 console.log("--------------------");
+// //
+// //             } catch (e) {
+// //                 console.log("[!] error reading memory:", e);
+// //             }
+// //
+// //         }
+// //     });
+// //
+// // });
+//
+// import "frida-il2cpp-bridge";
+//
+// function safeTypeName(t: any): string {
+//     try {
+//         // frida-il2cpp-bridge 的 type 对象通常有 .name / .fullName
+//         return (t?.fullName ?? t?.name ?? String(t)) as string;
+//     } catch {
+//         return "";
+//     }
+// }
+//
+// function sanitize(s: string): string {
+//     return (s || "").replace(/[^a-zA-Z0-9_]/g, "_");
+// }
+//
+// Il2Cpp.perform(() => {
+//     const result: any[] = [];
+//     const exported = new Set<string>();
+//
+//     const targetAssemblies = [
+//         "Assembly-CSharp",
+//         // "UnityEngine.CoreModule",
+//         // "UnityEngine.UI",
+//         // "System",
+//         // "mscorlib",
+//     ];
+//
+//     for (const asmName of targetAssemblies) {
+//         let assembly: any;
+//         try {
+//             assembly = Il2Cpp.domain.assembly(asmName);
+//         } catch (e) {
+//             console.log(`[!] Cannot load assembly: ${asmName} -> ${e}`);
+//             continue;
+//         }
+//         if (!assembly) continue;
+//
+//         const image = assembly.image;
+//         console.log(`[+] Scanning image: ${asmName} classes=${image.classes.length}`);
+//
+//         for (const c of image.classes) {
+//             // 组合一个更稳定的类标识
+//             const namespace = c.namespace || "";
+//             const className = c.name || "";
+//             const declaringType = namespace ? `${namespace}.${className}` : className;
+//
+//             for (const m of c.methods) {
+//                 // 注意：virtualAddress 为空说明可能是抽象/泛型未实例化/或被裁剪
+//                 const va: NativePointer | null = (m.virtualAddress ?? null) as any;
+//                 if (!va || va.isNull()) continue;
+//
+//                 let module: Module | null = null;
+//                 try {
+//                     module = Process.findModuleByAddress(va);
+//                 } catch {
+//                     module = null;
+//                 }
+//                 if (!module) continue;
+//
+//                 const key = va.toString();
+//                 if (exported.has(key)) continue;
+//                 exported.add(key);
+//
+//                 const rva = va.sub(module.base);
+//
+//                 // 方法名清洗，用来给 IDA 命名
+//                 const cleanClass = sanitize(className);
+//                 const cleanMethod = sanitize(m.name || "");
+//                 const newName = `${cleanClass}__${cleanMethod}`;
+//
+//                 // 是否 static / 返回值 / 参数
+//                 let isStatic = false;
+//                 try { isStatic = !!(m.isStatic); } catch {}
+//
+//                 let returnType = "";
+//                 try { returnType = safeTypeName(m.returnType); } catch {}
+//
+//                 let params: { name: string; type: string }[] = [];
+//                 let paramCount = 0;
+//
+//                 // frida-il2cpp-bridge 不同版本：m.parameters 或 m.parameterCount + m.parameter(i)
+//                 try {
+//                     if (Array.isArray((m as any).parameters)) {
+//                         const ps = (m as any).parameters;
+//                         paramCount = ps.length;
+//                         params = ps.map((p: any, idx: number) => ({
+//                             name: (p?.name ?? `arg${idx}`) as string,
+//                             type: safeTypeName(p?.type),
+//                         }));
+//                     } else if (typeof (m as any).parameterCount === "number" && typeof (m as any).parameter === "function") {
+//                         paramCount = (m as any).parameterCount;
+//                         for (let i = 0; i < paramCount; i++) {
+//                             const p = (m as any).parameter(i);
+//                             params.push({
+//                                 name: (p?.name ?? `arg${i}`) as string,
+//                                 type: safeTypeName(p?.type),
+//                             });
+//                         }
+//                     } else if (typeof (m as any).parameterCount === "number" && Array.isArray((m as any).parameters)) {
+//                         // 冗余保护
+//                         const ps = (m as any).parameters;
+//                         paramCount = ps.length;
+//                         params = ps.map((p: any, idx: number) => ({
+//                             name: (p?.name ?? `arg${idx}`) as string,
+//                             type: safeTypeName(p?.type),
+//                         }));
+//                     }
+//                 } catch {
+//                     // ignore
+//                 }
+//
+//                 // 尝试拿到更完整的签名字符串（若 bridge 提供）
+//                 let signature = "";
+//                 try {
+//                     // 有些版本 m.signature / m.toString() 会包含参数/返回值
+//                     signature = (m.signature ?? "") as string;
+//                     if (!signature) signature = String(m);
+//                 } catch {
+//                     signature = "";
+//                 }
+//
+//                 result.push({
+//                     module: module.name,
+//                     image: asmName,
+//                     namespace,
+//                     class: className,
+//                     declaringType,
+//                     method: m.name,
+//                     name: newName,
+//                     isStatic,
+//                     returnType,
+//                     params,
+//                     paramCount,
+//                     va: va.toString(),
+//                     rva: parseInt(rva.toString(), 16),
+//                     // 这个字段很适合做 IDA SetType 的来源
+//                     signature,
+//                 });
+//             }
+//         }
+//     }
+//
+//     console.log(`[+] Dump finished. Total methods exported: ${result.length}`);
+//
+//     // 发回 python 端保存为 json
+//     send({
+//         type: "il2cpp_dump_v2",
+//         data: result,
+//     });
+//
+//     // 如需在控制台抽样打印几条：
+//     // result.slice(0, 10).forEach(x => console.log(x.declaringType, x.method, x.rva, x.signature));
+// });
 ✄
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {

@@ -34,7 +34,7 @@
 'use strict';
 
 const IL2CPP = "libil2cpp.so";
-const addrX = "0x7b22aab8";
+const addrX = "0x83a09000";
 const TARGET_METHODINFO = ptr(addrX);
 
 // ================= helpers =================

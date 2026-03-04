@@ -29,7 +29,7 @@ device.resume(pid)
 
 print("[*] App resumed")
 
-input("[*] Press ENTER to dump...")
+input("[*] Press ENTER to dump1...")
 
 print("[*] Dumping il2cpp...")
 

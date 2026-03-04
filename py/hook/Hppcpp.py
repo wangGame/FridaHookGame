@@ -32,7 +32,7 @@
 #             print(f"[+] received {received // (1024*1024)} MB")
 #
 #     elif mtype == "done":
-#         print("[+] dump complete")
+#         print("[+] dump1 complete")
 #         print(f"[+] total bytes: {received}")
 #         fp.close()
 #

@@ -21,15 +21,10 @@ Java.perform(function () {
         this.add(4,5)
    }
 
-
     var addFunc = mainActivity.add.overload('int','int')
-
     addFunc.implementation = function(a, b) {
-
         console.log("xxadd ====>", a, b)
-
         var ret = addFunc.call(this, a, b)
-
         return ret
     }
 })

@@ -67,6 +67,7 @@ function listCandidates() {
 
 setImmediate(() => {
   const addr = findSymbolAddrExact(TARGET);
+  console.log(addr)
   if (!addr) {
     listCandidates();
     return;

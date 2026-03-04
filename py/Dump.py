@@ -8,7 +8,7 @@ OUTPUT_FILE = "libil2cpp_dumpx.so"
 
 def on_message(message, data):
     if message["type"] == "send":
-        print("[+] Receiving dump...")
+        print("[+] Receiving dump1...")
 
         with open(OUTPUT_FILE, "wb") as f:
             f.write(data)

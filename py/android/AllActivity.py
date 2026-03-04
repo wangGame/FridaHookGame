@@ -1,6 +1,5 @@
 import frida, sys
 
-
 rdev = frida.get_usb_device()
 # find front app
 front_app = rdev.get_frontmost_application()

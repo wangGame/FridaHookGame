@@ -2,7 +2,7 @@ import frida
 import sys
 import time
 
-PACKAGE_NAME = "jigsawcard"
+PACKAGE_NAME = "com.bigcake.android.classicdominoes"
 
 def on_message(message, data):
     print(message)
@@ -21,7 +21,7 @@ while True:
 
 print("[*] Attached!")
 
-with open("resources/temp/RunMethod.js", "r", encoding="utf-8") as f:
+with open("Track.js", "r", encoding="utf-8") as f:
     script_code = f.read()
 
 script = session.create_script(script_code)
