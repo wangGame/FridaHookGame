@@ -1,0 +1,41 @@
+function hook_mmap() {
+
+    var mmapPtr = Module.findExportByName(null, "mmap");
+
+    if (!mmapPtr) {
+        console.log("mmap not found");
+        return;
+    }
+
+    console.log("[+] mmap addr:", mmapPtr);
+
+    Interceptor.attach(mmapPtr, {
+
+        onEnter: function (args) {
+
+
+
+        },
+
+        onLeave: function (retval) {
+
+            if (retval.isNull())
+                return;
+
+            var base = retval;
+            var size = this.size;
+
+            // 只关注比较大的内存
+            if (size < 0x1000)
+                return;
+
+            console.log("\n====== mmap ======");
+
+
+
+        }
+
+    });
+}
+
+setImmediate(hook_mmap);
