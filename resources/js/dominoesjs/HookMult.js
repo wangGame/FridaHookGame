@@ -135,7 +135,37 @@ function parseCocosLog(args) {
     });
 
 }
+function analyzeStruct(base, size) {
 
+    console.log("\n======= STRUCT ANALYZE =======");
+
+    for (var i = 0; i < size; i += 4) {
+
+        var addr = base.add(i);
+        var val = addr.readU32();
+
+        var type = "int";
+
+        // 判断 pointer
+        if (val > 0x10000000 && val < 0xF0000000) {
+            type = "ptr";
+        }
+
+        // 判断小整数（状态）
+        if (val >= 0 && val <= 20) {
+            type = "state";
+        }
+
+        console.log(
+            "0x" + i.toString(16).padStart(4, "0"),
+            " -> ",
+            val,
+            " (" + type + ")"
+        );
+    }
+
+    console.log("======= END STRUCT =======");
+}
 /**
  * ==========================
  * Hook 配置
@@ -143,32 +173,32 @@ function parseCocosLog(args) {
  */
 
 const HOOKS = [
-    {
-        name: "Player::getStatistics",
-        symbol: "_ZN6Player13getStatisticsE11ELevelModel",
-        onEnter(args) {
-            console.log("\n🎯 Player::getStatistics ENTER");
-            console.log("   this =", args[0]);
-            console.log("   levelModel =", args[1].toInt32());
-        },
-        onLeave(retval) {
-            console.log("🎯 Player::getStatistics LEAVE");
-            console.log("   return =", retval.toInt32());
-        }
-    },
+//    {
+//        name: "Player::getStatistics",
+//        symbol: "_ZN6Player13getStatisticsE11ELevelModel",
+//        onEnter(args) {
+//            console.log("\n🎯 Player::getStatistics ENTER");
+//            console.log("   this =", args[0]);
+//            console.log("   levelModel =", args[1].toInt32());
+//        },
+//        onLeave(retval) {
+//            console.log("🎯 Player::getStatistics LEAVE");
+//            console.log("   return =", retval.toInt32());
+//        }
+//    },
 
-    {
-        name: "Player::getCurrStatistics",
-        symbol: "_ZN6Player17getCurrStatisticsEv",
-        onEnter(args) {
-            console.log("\n🎯 Player::getCurrStatistics ENTER");
-            console.log("   this =", args[0]);
-        },
-        onLeave(retval) {
-            console.log("🎯 Player::getCurrStatistics LEAVE");
-            console.log("   return =", retval.readPointer());
-        }
-    },
+//    {
+//        name: "Player::getCurrStatistics",
+//        symbol: "_ZN6Player17getCurrStatisticsEv",
+//        onEnter(args) {
+//            console.log("\n🎯 Player::getCurrStatistics ENTER");
+//            console.log("   this =", args[0]);
+//        },
+//        onLeave(retval) {
+//            console.log("🎯 Player::getCurrStatistics LEAVE");
+//            console.log("   return =", retval.readPointer());
+//        }
+//    },
     {
         name: "LevelBase::levelStartStatistics",
         symbol: "_ZN9LevelBase20levelStartStatisticsEv",
@@ -191,6 +221,104 @@ const HOOKS = [
         },
         onLeave(retval) {
             console.log("🎯 LevelBase::levelRoundStatistics LEAVE");
+            console.log("   return =", retval.toInt32());
+        }
+    },
+//
+//{
+//        name: "Level::_ZN8CardDataC2ERKS_",
+//        symbol: "_ZN8CardDataC2ERKS_",
+//        onEnter(args) {
+//            console.log("\n🎯 Level::_ZN8CardDataC2ERKS_ ENTER");
+//            console.log("   this =", args[0]);
+//        },
+//        onLeave(retval) {
+//            console.log("🎯 Level::_ZN8CardDataC2ERKS_ LEAVE");
+//            console.log("   return =", retval.toInt32());
+//        }
+//    },
+
+{
+        name: "Level::robotPlayAHandPointB",
+        symbol: "_ZN5Level20robotPlayAHandPointBERNSt6__ndk16vectorIiNS0_9allocatorIiEEEERNS1_IS4_NS2_IS4_EEEE",
+        onEnter(args) {
+            console.log("\n🎯 Level::robotPlayAHandPointB ENTER");
+            console.log("   this =", args[0]);
+        },
+        onLeave(retval) {
+            console.log("🎯 Level::robotPlayAHandPointB LEAVE");
+            console.log("   return =", retval.toInt32());
+        }
+    },
+
+{
+        name: "Level::blockLogic1",
+        symbol: "_ZN5Level11blockLogic1ERNSt6__ndk16vectorIiNS0_9allocatorIiEEEERNS1_IS4_NS2_IS4_EEEE",
+        onEnter(args) {
+
+
+
+        console.log("\n🎯 Level::blockLogic1 ENTER");
+
+        var thiz = args[0];
+        var a2   = args[1];
+
+        console.log("this =", thiz);
+        console.log("a2   =", a2);
+
+        // 分析结构体
+        analyzeStruct(a2, 0x800);
+
+        // 打印关键字段
+        var v1516 = a2.add(1516).readU32();
+        var v1532 = a2.add(1532).readU32();
+
+        console.log("offset 1516 =", v1516);
+        console.log("offset 1532 =", v1532);
+
+
+        },
+        onLeave(retval) {
+      console.log("🎯 Level::blockLogic1 LEAVE");
+        console.log("return =", retval);
+        }
+    },
+
+{
+        name: "Level::blockLogic2",
+        symbol: "_ZN5Level11blockLogic2ERNSt6__ndk16vectorIiNS0_9allocatorIiEEEERNS1_IS4_NS2_IS4_EEEE",
+        onEnter(args) {
+            console.log("\n🎯 Level::blockLogic2 ENTER");
+            console.log("   this =", args[0]);
+        },
+        onLeave(retval) {
+            console.log("🎯 Level::blockLogic2 LEAVE");
+            console.log("   return =", retval.toInt32());
+        }
+    },
+
+{
+        name: "Level::playLogic",
+        symbol: "_ZN5Level9playLogicERNSt6__ndk16vectorIiNS0_9allocatorIiEEEERNS1_IS4_NS2_IS4_EEEE",
+        onEnter(args) {
+            console.log("\n🎯 Level::playLogic ENTER");
+            console.log("   this =", args[0]);
+        },
+        onLeave(retval) {
+            console.log("🎯 Level::playLogic LEAVE");
+            console.log("   return =", retval.toInt32());
+        }
+    },
+
+    {
+        name: "Level::getRobotPlayAHandInfo",
+        symbol: "_ZN5Level21getRobotPlayAHandInfoEv",
+        onEnter(args) {
+            console.log("\n🎯 Level::getRobotPlayAHandInfo ENTER");
+            console.log("   this =", args[0]);
+        },
+        onLeave(retval) {
+            console.log("🎯 Level::getRobotPlayAHandInfo LEAVE");
             console.log("   return =", retval.toInt32());
         }
     },
@@ -330,7 +458,7 @@ const HOOKS = [
         },
         onLeave(retval) {
              console.log("   robotChangeCard =====================", retval.toInt32());
-              retval.replace(2);
+//              retval.replace(2);
             console.log("   return =", retval.toInt32());
         }
     },
@@ -359,19 +487,19 @@ const HOOKS = [
             console.log("   patched return  =", retval.toInt32());
         }
     },
-    {
-        name: "Level::IsVer4TestB",
-        symbol: "_ZN11SHUtilities11IsVer4TestBEv", // ⚠️ 以你实际符号为准
-        onEnter(args) {
-            console.log("\n🎯 IsVer4TestB ENTER");
-            console.log("   this =", args[0]);
-            console.log("   arg =", args[1]);
-        },onLeave(retval) {
-            console.log("   original return =", retval.toInt32());
-            retval.replace(1);
-            console.log("   patched return  =", retval.toInt32());
-        }
-    },
+//    {
+//        name: "Level::IsVer4TestB",
+//        symbol: "_ZN11SHUtilities11IsVer4TestBEv", // ⚠️ 以你实际符号为准
+//        onEnter(args) {
+//            console.log("\n🎯 IsVer4TestB ENTER");
+//            console.log("   this =", args[0]);
+//            console.log("   arg =", args[1]);
+//        },onLeave(retval) {
+//            console.log("   original return =", retval.toInt32());
+//            retval.replace(1);
+//            console.log("   patched return  =", retval.toInt32());
+//        }
+//    },
     {
         name: "Level::robotDrawNoCard",
         symbol: "_ZN5Level15robotDrawNoCardEv", // ⚠️ 以你实际符号为准
@@ -519,18 +647,6 @@ const HOOKS = [
                  console.log(args[1])
         },onLeave(retval){
             console.log("   return =", retval.toInt32());
-        }
-    }
-  ,
-     {
-        name: "Player::getCurrStatistics",
-        symbol: "_ZN6Player17getCurrStatisticsEv", // ⚠️ 以你实际符号为准
-        onEnter(args) {
-            console.log("\n🎯 Player::getCurrStatistics");
-
-        },       onLeave(retval) {
-
-
         }
     }
     ,

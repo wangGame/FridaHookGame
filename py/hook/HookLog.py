@@ -11,3 +11,5 @@ with open(filename, "r", encoding="utf-8") as f:
 script.on('message', on_message)  # 加载回调函数，也就是js中执行send函数规定要执行的python函数
 script.load()  # 加载脚本
 sys.stdin.read()
+
+
