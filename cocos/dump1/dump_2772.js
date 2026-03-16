@@ -1,0 +1,1 @@
+function6__baseIFbRKNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEN7cocos2d9extension13ManifestAssetEEEE

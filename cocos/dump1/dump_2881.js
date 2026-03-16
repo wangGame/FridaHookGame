@@ -1,0 +1,1 @@
+function6__funcIZ31register_all_dragonbones_manualPN2se6ObjectEE3$_0NS_9allocatorIS5_EEFvPN11dragonBones10BaseObjectEiEEE

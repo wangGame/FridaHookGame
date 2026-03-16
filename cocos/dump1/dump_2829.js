@@ -1,0 +1,1 @@
+function6__funcIPFvPN7cocos2d8renderer9NodeProxyEPNS3_12ModelBatcherEPNS3_5SceneEENS_9allocatorISB_EESA_EE

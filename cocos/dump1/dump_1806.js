@@ -1,0 +1,1 @@
+function decodeURI() {}function decodeURIComponent() {}function encodeURI() {}function encodeURIComponent() {}function gc() {}

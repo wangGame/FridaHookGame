@@ -1,0 +1,1 @@
+function(currentScriptDir){ window.module = window.module || {}; var exports = window.module.exports = {}; 

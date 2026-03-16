@@ -1,0 +1,2 @@
+function(R){var o,t;if(R){o=R;}else{o=R=new cc.Node();}o._name="BlockProducerItem";var a1=o._components=new Array(2);a1[0]=(function(){var o=new (F[0])();o.node=R;return o;})();a1[1]=(function(){var o=new cc.Sprite();o.node=R;var a2=o._materials=new Array(1);a2[0]=O[0];o._sizeMode=0;return o;})();o._prefab=(function(){var o=new (F[1])();o.root=R;o.asset=O[1];return o;})();t=o._contentSize;t.width=620;t.height=620;var a3=o._trs=new Float32Array(10);a3[6]=1;a3[7]=1;a3[8]=1;a3[9]=1;return o;})
+})

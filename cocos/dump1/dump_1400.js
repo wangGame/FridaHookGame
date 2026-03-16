@@ -1,0 +1,2 @@
+function(){var o=new (F[1])();o.node=R;o.armatureDisplay=v2;return o;})();o._prefab=(function(){var o=new (F[0])();o.root=R;o.asset=O[3];return o;})();t=o._contentSize;t.width=868;t.height=98;var a6=o._trs=new Float32Array(10);a6[6]=1;a6[7]=1;a6[8]=1;a6[9]=1;return o;})
+})

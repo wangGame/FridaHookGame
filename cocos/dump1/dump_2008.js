@@ -1,0 +1,1 @@
+function isOneByteString();let kExternalStringMinOneByteLength = 1;let kExternalStringMinTwoByteLength = 1;let kExternalStringMinOneByteCachedLength = 5;let kExternalStringMinTwoByteCachedLength = 3;

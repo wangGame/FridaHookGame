@@ -1,0 +1,2 @@
+function(b){mraidview.detectAndBlockFraud("imai.showSKStore")||a.showSKStore(b)};b.ios.openItunesProductView=
+function(b){mraidview.detectAndBlockFraud("imai.ios.openItunesProductView")||a.ios.openItunesProductView(b)};b.fireAdReady=a.fireAdReady;b.fireAdFailed=a.fireAdFailed})();

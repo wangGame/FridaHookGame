@@ -1,0 +1,1 @@
+function isFinite() {}function escape()  {}function unescape()  {}function decodeURI() {}function decodeURIComponent() {}function encodeURI() {}function encodeURIComponent() {}function gc() {}
