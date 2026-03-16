@@ -1,0 +1,1 @@
+function does not do what its name implies: it will not cancel the future if just cancel() was called.

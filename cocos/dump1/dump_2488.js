@@ -1,0 +1,1 @@
+function(e){return e===n}),n&&-1<a?i.splice(a,1):r._events[e]=[])}}})();apply(e,["mraid.gameEnd"].concat(a)),w

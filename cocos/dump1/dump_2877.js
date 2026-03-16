@@ -1,0 +1,1 @@
+function6__funcIZL52js_cocos2dx_spine_SkeletonDataMgr_setDestroyCallbackRN2se5StateEE4$_12NS_9allocatorIS5_EEFviEEE

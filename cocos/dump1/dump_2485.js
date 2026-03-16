@@ -1,0 +1,1 @@
+function(e,n){e=r._events[e];Array.isArray(e)&&0<e.length&&e.forEach(function(e){e.call(this,n)})},removeListener:function(e,n){var a,i=r._events[e];Array.isArray(i)&&(a=i.findIndex(function(e){return e===n}),n&&-1<a?i.splice(a,1):r._events[e]=[])}}})();

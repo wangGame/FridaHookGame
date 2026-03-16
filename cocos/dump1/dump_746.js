@@ -1,0 +1,11 @@
+function (a) {
+    if (!(!(a && R(a) && T(a.impressionOwner, qa)) || 'videoEventsOwner' in a && null != a.videoEventsOwner && !T(a.videoEventsOwner, qa) || 'mediaEventsOwner' in a && null != a.mediaEventsOwner && !T(a.mediaEventsOwner, qa))) {
+      if (a.creativeType && a.impressionType) { var b = a.mediaEventsOwner; null == this.b.a && this.f.setCreativeType(a.creativeType, b); null == this.b.f && (this.b.f = a.impressionType); nb(this.a, b) } else b = a.videoEventsOwner, this.b.b = null == b || 'none' === b ? 'display' : 'video', this.b.a = null, this.b.f = null, nb(this.a, b);
+      ob(this.a, a.impressionOwner); a && null != a.isolateVerificationScripts && 'boolean' === typeof a.isolateVerificationScripts && (this.b.C = a.isolateVerificationScripts)
+    }
+  };
+  n.V = function (a, b, c, d) {
+    var e; if (R(b)) { if (e = T(b.environment, ta) && T(b.adSessionType, pa)) e = b.omidNativeInfo, e = R(e) ? S(e.partnerName) && S(e.partnerVersion) : !1; e && (e = b.app, e = R(e) ? S(e.libraryVersion) && S(e.appId) : !1) } else e = !1; e && (Mb(d) && (this.b.v = new Map(Object.entries(d))), d = this.f, c = void 0 === c ? null : c, null == a && (a = Sb()), d.a.adSessionId = a, a = d.a, e = a.c || {}, b.omidJsInfo = Object.assign({}, e.omidJsInfo || {}, b.omidJsInfo || {}), e = b = Object.assign({}, e, b), a.C || (null != a.i ? (e.videoElement = a.i, e.accessMode = 'full') : null !=
+      a.h && (e.slotElement = a.h, e.accessMode = 'full')), a.c = b, void 0 !== b.contentUrl && (a.s = b.contentUrl), eb(d.c, c), d.b && M(d.b))
+  }; n.T = function () { var a = this.f; ib(a.c); a.b.m() }; n.Z = function (a) { R(a) && Lb(a.x) && Lb(a.y) && Lb(a.width) && Lb(a.height) && (this.b.G = a, qb(this.c, 'container')) }; n.$ = function (a) { T(a, sa) && (this.b.m = a, 'backgrounded' === a ? qb(this.c, 'container', 'backgrounded') : qb(this.c, 'container')) }; n.W = function (a) { 'impression' === a && (this.L(), this.g && M(this.g)) }; n.L = function () { pb(this.a, 'native') && jb(this.a, 'native') };
+  n.U = function (a) { a = void 0 === a ? null : a; K(this.a, 'native') && kb(this.a, 'native', a) }; n.error = function (a, b) { T(a, na) && db(this.a, a, b) }; n.X = function (a, b) { this.M(a, b) }; n.M = fun

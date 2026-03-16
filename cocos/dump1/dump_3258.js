@@ -1,0 +1,42 @@
+function() {
+    var adLinear = this.creative.getAdLinear();
+    return adLinear;
+};
+
+VPAIDWrapper.prototype.getAdExpanded = function() {
+    var expanded = this.creative.getAdExpanded();
+    return expanded;
+};
+
+VPAIDWrapper.prototype.getAdSkippableState = function() {
+    var state = this.creative.getAdSkippableState();
+    return state;
+};
+
+VPAIDWrapper.prototype.getAdRemainingTime = function() {
+    var remaining = this.creative.getAdRemainingTime();
+    return remaining;
+};
+
+VPAIDWrapper.prototype.getAdWidth = function() {
+    var adWidth = this.creative.getAdWidth();
+    return adWidth;
+};
+
+VPAIDWrapper.prototype.getAdHeight = function() {
+    var adHeight = this.creative.getAdHeight();
+    return adHeight;
+};
+
+VPAIDWrapper.prototype.getAdDuration = function() {
+    var duration = this.creative.getAdDuration();
+    return duration;
+};
+
+VPAIDWrapper.prototype.getAdCompanions = function() {
+    return this.creative.getAdCompanions();
+};
+
+VPAIDWrapper.prototype.getAdIcons = function() {
+    return this.creative.getAdIcons();
+};

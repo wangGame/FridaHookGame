@@ -1,0 +1,8 @@
+function(t) {
+this._points = t;
+}
+});
+cc.cardinalSplineTo = function(t, e, i) {
+return new cc.CardinalSplineTo(t, e, i);
+};
+cc.CardinalS

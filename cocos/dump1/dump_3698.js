@@ -1,0 +1,1 @@
+function has a reified type parameter and thus can only be inlined at compilation time, not called directly.

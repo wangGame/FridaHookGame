@@ -1,0 +1,1 @@
+function(c){var b=document.createElement("iframe");b.setAttribute("src","ios-log: "+c);document.documentElement.appendChild(b);b.parentNode.removeChild(b);b=null};console.debug=console.info=console.warn=console.error=console.log}}());(function(){var d=window.MRAID_ENV={version:"3.0",sdk:"bigoads",sdkVersion:"

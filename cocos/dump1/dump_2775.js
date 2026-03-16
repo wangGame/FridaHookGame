@@ -1,0 +1,1 @@
+function6__funcIZL15localDownloadervE3$_9NS_9allocatorIS2_EEFvRKN7cocos2d7network12DownloadTaskERNS_6vectorIhNS3_IhEEEEEEE

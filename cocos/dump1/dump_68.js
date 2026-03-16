@@ -1,0 +1,1 @@
+function(e){e.CPVI="CPVI",e.CustomEndCard="customEndCard",e.MRAID="MRAID",e.PlayableAd="playableAd",e.ImageInterstitial="imageInterstitial",e.StaticBanner="staticBanner",e.AppTrailerMarketplace="AT_MP",e.IECMarketplace="IEC_MP",e.HtmlMp="HTML_MP",e.VpaidWrapper="vpaidWrapp

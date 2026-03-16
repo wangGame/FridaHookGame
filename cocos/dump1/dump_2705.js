@@ -1,0 +1,1 @@
+function6__funcIPFNS_10unique_ptrI14IBaseComponentNS_14default_deleteIS3_EEEEvENS_9allocatorIS8_EES7_EE

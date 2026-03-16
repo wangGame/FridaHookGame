@@ -1,0 +1,1 @@
+function6__baseIFvRKN7cocos2d8renderer4ViewERNS_6vectorINS3_12BaseRenderer9StageItemENS_9allocatorIS9_EEEEEEE

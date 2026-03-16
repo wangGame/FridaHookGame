@@ -1,0 +1,3 @@
+function(){var a=gc,b=this;var c=void 0===c?L:c;this.j=a;this.g=Hc;this.l={};this.m={};this.i=new X;c.omid=c.omid||{};c.omid.v1_VerificationServiceCommunication=this.i;this.h=null;c&&c.addEventListener&&c.postMessage&&(this.h=new dc(c));this.i.g=function(d,e){uc(b,d,e,b.i)};this.h&&(this.h.g=function(d,e){b.h&&uc(b,d,e,b.h)})};L.omidBridge=new Z;new mc;
+(function(a,b){a.frames&&a.document&&!['omid_v1_present','omid_v1_present_web','omid_v1_present_app'].some(function(c){return!!a.frames[c]})&&(null==a.document.body&&'MutationObserver'in a?zc(a,b):(b=wc(b),a.document.body?(yc(a,'omid_v1_present'),yc(a,b)):(xc(a,'omid_v1_present'),xc(a,b))))})(L,'app');
+}).call(this, this);

@@ -1,0 +1,1 @@
+function6__funcIZ60Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeTouchesEndQueueE3$_1NS_9allocatorIS2_EEFvvEEE

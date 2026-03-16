@@ -1,0 +1,1 @@
+function6__funcIZN8facebook5react12makeCallbackENS_8weak_ptrINS3_8InstanceEEERKN5folly7dynamicEE3$_0NS_9allocatorISB_EEFvS8_EEE

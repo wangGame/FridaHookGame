@@ -1,0 +1,1 @@
+function6__funcIZN8facebook5react24bindNativePerformanceNowERNS2_3jsi7RuntimeEE3$_0NS_9allocatorIS7_EEFNS4_5ValueES6_RKSA_PSB_jEEE

@@ -1,0 +1,1 @@
+function6__funcIZN11AppDelegate29applicationDidFinishLaunchingEvE3$_0NS_9allocatorIS3_EEFvPKcS7_S7_EEE

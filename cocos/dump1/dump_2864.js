@@ -1,0 +1,1 @@
+function6__funcIZL54js_cocos2dx_particle_ParticleSimulator_setStopCallbackRN2se5StateEE3$_1NS_9allocatorIS5_EEFvvEEE

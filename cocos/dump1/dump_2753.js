@@ -1,0 +1,1 @@
+function6__funcIZ74Java_org_cocos2dx_lib_Cocos2dxOrientationHelper_nativeOnOrientationChangedE3$_1NS_9allocatorIS2_EEFvvEEE

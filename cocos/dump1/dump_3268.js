@@ -1,0 +1,1 @@
+function called on unmergeable property IsPopup. A popup should not be a child of a clickable/focusable node.

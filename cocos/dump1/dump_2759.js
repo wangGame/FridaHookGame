@@ -1,0 +1,1 @@
+function6__funcIZ61Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeTouchesMoveQueueE3$_2NS_9allocatorIS2_EEFvvEEE

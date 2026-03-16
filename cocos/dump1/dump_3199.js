@@ -1,0 +1,3 @@
+function(){var a;this.a=a=void 0===a?omidGlobal:a};new nc;var uc=new function(){},vc=new function(){},lc=new function(){this.b=X;this.c=vc;this.a=H()},Dc;I?Dc=I.IntersectionObserver&&(I.MutationObserver||I.ResizeObserver)?new S(I,uc,lc,X):new R(I,vc,lc,oc,X):Dc=null;var $b=Dc,ac=new function(){var a=X;var b=void 0===b?I:b;this.f=a;this.a=b;this.c=H();this.b=[]},hc=new Zb,mc=new function(){var a=X,b=H();this.b=a;this.a=b};I.omidBridge=new Z;new gc;
+if(I.frames&&I.document&&!('omid_v1_present'in I.frames)){var Ec;if(Ec=null==I.document.body)Ec='MutationObserver'in I;Ec?tc():I.document.body?sc():I.document.write('<iframe style="display:none" id="omid_v1_present" name="omid_v1_present"></iframe>')};
+}).call(this, this);

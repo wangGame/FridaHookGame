@@ -1,0 +1,1 @@
+function(video) { video.muted = true; }); [].forEach.call(audios, function(audio) { audio.muted = true; }); 

@@ -1,0 +1,1 @@
+function6__funcIZ44register_all_cocos2dx_download_client_manualPN2se6ObjectEE3$_0NS_9allocatorIS5_EEFvvEEE

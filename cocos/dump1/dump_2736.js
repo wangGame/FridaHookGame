@@ -1,0 +1,1 @@
+function6__funcIZ12registerCompR6PuzzleE4$_31NS_9allocatorIS4_EEFNS_10unique_ptrI14IBaseComponentNS_14default_deleteIS8_EEEEvEEE

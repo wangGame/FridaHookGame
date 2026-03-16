@@ -1,0 +1,1 @@
+function6__funcIZN7cocos2d10ThreadPool8pushTaskERKNS_8functionIFviEEENS3_8TaskTypeEE3$_0NS_9allocatorISA_EES5_EE

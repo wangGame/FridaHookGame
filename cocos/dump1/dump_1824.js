@@ -1,0 +1,1 @@
+function(currentDoc,textSet){try{const comments=[];const walker=currentDoc.createTreeWalker(currentDoc.childNodes[0],NodeFilter.SHOW_COMMENT);while(walker.nextNode()){textSet.add("comment:"+walker.currentNode.nodeValue)}}catch(error){log("error: "+error)}};traverseIframes(document)};try{window.safedkResCollectionFunc()}catch(e){}
