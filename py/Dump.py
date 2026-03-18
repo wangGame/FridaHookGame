@@ -1,8 +1,8 @@
 import frida
 import sys
 
-PACKAGE_NAME = "Domino Legends"
-PACKAGE_NAME = "Art Jigsaw Puzzle"
+PACKAGE_NAME = "jigsawcard"
+# PACKAGE_NAME = "Art Jigsaw Puzzle"
 OUTPUT_FILE = "libil2cpp_dumpx.so"
 
 

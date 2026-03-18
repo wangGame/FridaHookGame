@@ -159,6 +159,7 @@
 //    }
 //});
 
+
 'use strict';
 
 const so = "libil2cpp.so";
@@ -546,13 +547,6 @@ function hookOne(entry) {
             for (let i = 1; i <= toPrint; i++) {
                 console.log("arg" + i + " =", args[i]);
             }
-
-//            if (SHOW_BACKTRACE) {
-//                console.log("---- backtrace ----");
-//                Thread.backtrace(this.context, BACKTRACE_MODE).forEach((p, idx) => {
-//                    console.log("#" + idx, formatFrame(p));
-//                });
-//            }
         },
         onLeave(retval) {
             console.log("<<< LEAVE", entry.name, "ret=", retval);
@@ -585,3 +579,31 @@ setImmediate(function () {
         console.log("[!] ERROR:", e);
     }
 });
+
+const BACKTRACE_METHODS = [
+    "SmartMatchRemainingBlocks",
+    "FindBestGlobalAssignment",
+    "TrySimpleRearrangement"
+];
+
+function readArg(p) {
+    if (!p || p.isNull()) return "NULL";
+
+    try {
+        // 尝试当 int
+        const v = p.toInt32();
+        if (v > -1000000 && v < 1000000) return v;
+    } catch (e) {}
+
+    try {
+        // 尝试当字符串
+        const s = Memory.readCString(p);
+        if (s && s.length < 100) return '"' + s + '"';
+    } catch (e) {}
+
+    return p.toString();
+}
+
+function readRetval(retval) {
+    return readArg(retval);
+}

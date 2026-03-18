@@ -6,12 +6,60 @@ Il2Cpp.perform(() => {
     const exported = new Set<string>();
 
     const targetAssemblies = [
-//         "Assembly-CSharp"
-        "UnityEngine.CoreModule"
-// "Sirenix.OdinInspector.Attributes"
-//         "UnityEngine.UI"
-//          "System"
-//          "mscorlib"
+
+       "Assembly-CSharp",
+    "Coffee.UIEffect",
+    "Coffee.UIParticle",
+    "DOTween",
+    "Facebook.Unity.Android",
+    "Facebook.Unity.Settings",
+    "Facebook.Unity",
+    "Firebase.App",
+    "Firebase.Crashlytics",
+    "Firebase.Platform",
+    "Gilzoide.SqliteNet",
+    "Google.FlatBuffers",
+    "Google.Play.Common",
+    "Newtonsoft.Json",
+    "System.Core",
+    "System.Data",
+    "System.Numerics",
+    "System.Runtime.Serialization",
+    "System",
+    "Unity.TextMeshPro",
+    "Unity.Timeline",
+    "UnityEngine.AndroidJNIModule",
+    "UnityEngine.AnimationModule",
+    "UnityEngine.AssetBundleModule",
+    "UnityEngine.AudioModule",
+    "UnityEngine.CoreModule",
+    "UnityEngine.DirectorModule",
+    "UnityEngine.IMGUIModule",
+    "UnityEngine.InputLegacyModule",
+    "UnityEngine.ParticleSystemModule",
+    "UnityEngine.Physics2DModule",
+    "UnityEngine.PhysicsModule",
+    "UnityEngine.PropertiesModule",
+    "UnityEngine.SpriteShapeModule",
+    "UnityEngine.TextCoreFontEngineModule",
+    "UnityEngine.TextRenderingModule",
+    "UnityEngine.UI",
+    "UnityEngine.UIElementsModule",
+    "UnityEngine.UIModule",
+    "UnityEngine.UnityWebRequestModule",
+    "UnityEngine.VideoModule",
+    "com.beatles.unity.ui",
+    "com.learnings.download-unity",
+    "com.learnings.unity.assetbundle",
+    "com.learnings.unity.log",
+    "com.learnings.unity.nativeutil-unity",
+    "com.learnings.unity.storage.flatbuffers",
+    "com.learnings.unity.unikit.runtime",
+    "i2",
+    "mscorlib",
+    "spine-csharp",
+    "spine-timeline",
+    "spine-unity"
     ];
 
     targetAssemblies.forEach(name => {
@@ -77,29 +125,29 @@ Il2Cpp.perform(() => {
     });
 
 });
-
-Il2Cpp.perform(() => {
-
-    const image = Il2Cpp.domain.assembly("Assembly-CSharp").image;
-
-    image.classes.forEach(c => {
-
-        c.methods.forEach(m => {
-
-            console.log(
-                c.name,
-                m.name,
-                "VA:",
-                m.virtualAddress,
-                "RVA:",
-                m.relativeVirtualAddress
-            );
-
-        });
-
-    });
-
-});
+//
+// Il2Cpp.perform(() => {
+//
+//     const image = Il2Cpp.domain.assembly("Assembly-CSharp").image;
+//
+//     image.classes.forEach(c => {
+//
+//         c.methods.forEach(m => {
+//
+//             console.log(
+//                 c.name,
+//                 m.name,
+//                 "VA:",
+//                 m.virtualAddress,
+//                 "RVA:",
+//                 m.relativeVirtualAddress
+//             );
+//
+//         });
+//
+//     });
+//
+// });
 // // 需要和 frida-il2cpp-bridge.js 放在同目录
 // // 用法: frida -H 127.0.0.1:1234 -F -l trace_il2cpp.js
 //

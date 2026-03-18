@@ -79,7 +79,7 @@ import sys
 import json
 import os
 
-OUTPUT_DIR = r"D:\il2cpp_dump"
+OUTPUT_DIR = r"E:\work\JigsawChaiBao\classInfo\Coffee.UIParticle"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ====== IL2CPP 类型 → IDA C 类型（简易映射，可继续补） ======
