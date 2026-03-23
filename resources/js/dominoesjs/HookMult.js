@@ -244,6 +244,9 @@ const HOOKS = [
         onEnter(args) {
             console.log("\n🎯 Level::robotPlayAHandPointB ENTER");
             console.log("   this =", args[0]);
+            console.log("   this =", args[1]);
+            console.log("   this =", args[2]);
+            console.log("   this =", args[3]);
         },
         onLeave(retval) {
             console.log("🎯 Level::robotPlayAHandPointB LEAVE");
@@ -252,30 +255,33 @@ const HOOKS = [
     },
 
 {
+
         name: "Level::blockLogic1",
         symbol: "_ZN5Level11blockLogic1ERNSt6__ndk16vectorIiNS0_9allocatorIiEEEERNS1_IS4_NS2_IS4_EEEE",
         onEnter(args) {
 
 
 
-        console.log("\n🎯 Level::blockLogic1 ENTER");
+  console.log("\n🎯 Level::blockLogic1 ENTER");
+            const a2 = args[1];   // 具体第几个参数要看平台调用约定
 
-        var thiz = args[0];
-        var a2   = args[1];
+//
+//for (let i = 377; i <= 383; i++) {
+//    const off = i * 4;
+//    const val = Memory.readS32(a2.add(off));
+//    console.log(`a2[${i}] -> a2+0x${off.toString(16).toUpperCase()} = ${val}`);
+//}
 
-        console.log("this =", thiz);
-        console.log("a2   =", a2);
 
-        // 分析结构体
-        analyzeStruct(a2, 0x800);
-
-        // 打印关键字段
-        var v1516 = a2.add(1516).readU32();
-        var v1532 = a2.add(1532).readU32();
-
-        console.log("offset 1516 =", v1516);
-        console.log("offset 1532 =", v1532);
-
+for (let i = 0; i < 512; i++) {   // 512个int = 0x800字节
+    try {
+        const val = Memory.readS32(a2.add(i * 4));
+        console.log(`a2[${i}] = ${val}`);
+    } catch (e) {
+        console.log(`a2[${i}] ❌ invalid`);
+        break;
+    }
+}
 
         },
         onLeave(retval) {
@@ -617,13 +623,16 @@ const HOOKS = [
             console.log("\n🎯 robotPlayAHandLogicB ENTER");
             console.log("   this =", args[0]);
             console.log("   arg =", args[1]);
-            Thread.backtrace(this.context, Backtracer.ACCURATE)
-                .forEach((addr, i) => {
-                    const sym = DebugSymbol.fromAddress(addr);
-                    console.log(
-                        `   #${i} ${addr} ${sym.name || ""} ${sym.moduleName || ""}`
-                    );
-            });
+            console.log("   arg =", args[2]);
+            console.log("   arg =", args[3]);
+
+//            Thread.backtrace(this.context, Backtracer.ACCURATE)
+//                .forEach((addr, i) => {
+//                    const sym = DebugSymbol.fromAddress(addr);
+//                    console.log(
+//                        `   #${i} ${addr} ${sym.name || ""} ${sym.moduleName || ""}`
+//                    );
+//            });
         },onLeave(retval){
             console.log("   return =", retval.toInt32());
         }

@@ -527,6 +527,33 @@ function formatFrame(addr) {
 }
 
 // ====== hook ======
+//function hookOne(entry) {
+//    const key = entry.addr.toString();
+//    if (hookedAddrSet[key]) return;
+//    hookedAddrSet[key] = true;
+//
+//    console.log("[+] hook", entry.name, "@", entry.addr, "offset=" + hexOff(entry.addr, base));
+//
+//    Interceptor.attach(entry.addr, {
+//        onEnter(args) {
+//            this.entry = entry;
+//
+//            console.log("\n==================================================");
+//            console.log(">>> ENTER", entry.name);
+//            console.log("this =", args[0]);
+//
+//            const argc = entry.argc;
+//            const toPrint = Math.min(argc, MAX_ARGS_TO_PRINT);
+//            for (let i = 1; i <= toPrint; i++) {
+//                console.log("arg" + i + " =", args[i]);
+//            }
+//        },
+//        onLeave(retval) {
+//            console.log("<<< LEAVE", entry.name, "ret=", retval);
+//        }
+//    });
+//}
+
 function hookOne(entry) {
     const key = entry.addr.toString();
     if (hookedAddrSet[key]) return;
@@ -537,19 +564,44 @@ function hookOne(entry) {
     Interceptor.attach(entry.addr, {
         onEnter(args) {
             this.entry = entry;
+            this.args = [];
 
             console.log("\n==================================================");
             console.log(">>> ENTER", entry.name);
-            console.log("this =", args[0]);
 
+            // this 指针
+            this.thisObj = args[0];
+            console.log("this =", ptrStr(this.thisObj));
+
+            // 参数打印（增强版）
             const argc = entry.argc;
             const toPrint = Math.min(argc, MAX_ARGS_TO_PRINT);
+
             for (let i = 1; i <= toPrint; i++) {
-                console.log("arg" + i + " =", args[i]);
+                const val = readArg(args[i]);
+                this.args.push(val);
+                console.log("arg" + i + " =", val);
+            }
+
+            // ✅ 只对部分方法打印调用栈
+            if (BACKTRACE_METHODS.indexOf(entry.methodName) !== -1) {
+                console.log("---- backtrace ----");
+                Thread.backtrace(this.context, BACKTRACE_MODE).forEach((p, i) => {
+                    console.log("#" + i + " " + formatFrame(p));
+                });
             }
         },
+
         onLeave(retval) {
-            console.log("<<< LEAVE", entry.name, "ret=", retval);
+            const ret = readRetval(retval);
+
+            console.log("<<< LEAVE", entry.name);
+            console.log("ret =", ret);
+
+            // （可选）打印输入输出总结
+            if (this.args && this.args.length > 0) {
+                console.log("args summary =", JSON.stringify(this.args));
+            }
         }
     });
 }
@@ -581,10 +633,8 @@ setImmediate(function () {
 });
 
 const BACKTRACE_METHODS = [
-    "SmartMatchRemainingBlocks",
-    "FindBestGlobalAssignment",
-    "TrySimpleRearrangement"
-];
+   "CheckOverlapWithOtherBlocks"
+   ];
 
 function readArg(p) {
     if (!p || p.isNull()) return "NULL";
@@ -607,3 +657,34 @@ function readArg(p) {
 function readRetval(retval) {
     return readArg(retval);
 }
+
+
+'use strict';
+
+const base = Module.findBaseAddress("libil2cpp.so");
+const addr = base.add(0x0231AA8C);
+
+function readIl2CppString32(p) {
+    try {
+        if (!p || p.isNull()) return null;
+
+        const len = p.add(0x8).readS32();
+        if (len < 0 || len > 0x1000) return null;
+
+        return p.add(0xC).readUtf16String(len);
+    } catch (e) {
+        return null;
+    }
+}
+
+Interceptor.attach(addr, {
+    onEnter(args) {
+        const msg = readIl2CppString32(args[0]);
+
+        console.log("\n=== Debug.Log hit ===");
+        console.log("arg0 =", args[0], "msg =", msg);
+        console.log("arg1 =", args[1]);
+        console.log("arg2 =", args[2]);
+        console.log("arg3 =", args[3]);
+    }
+});

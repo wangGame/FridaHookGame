@@ -2,7 +2,7 @@ import frida  # 导入frida模块
 import sys  # 导入sys模块
 
 filename = "../resources/js/dominoesjs/HookMult.js"
-# filename = "../resources/js/dominoesjs/test.js"
+# filename = "../resources/js/dominoesjs/test.ts"
 # filename = "../resources/js/dominoesjs/cehnc.js"
 # filename = "../resources/js/xx.js"
 # filename = "../resources/js/SkipPurch.js"
