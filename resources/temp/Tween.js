@@ -56,7 +56,7 @@
 //        ["Game_HandleExchangeTwoPiece", 0x98a158],
 //        ["Game_CheckFastCompleteLastStep", 0x9864a8],
 //        ["Game_GetPuzzlePosition", 0x994104],
-//        ["Game_GetSizeDelta", 0x9941d8],
+////        ["Game_GetSizeDelta", 0x9941d8],
 //        ["Game_CheatFinishExceptTopLeftSwap", 0x994414],
 //        ["Game_CheatFinishWithSwap", 0x994980],
 //        ["Game_SwapPieces", 0x99471c],
@@ -104,27 +104,27 @@ setImmediate(function () {
         try {
 
             const addr = base.add(rva);
-
+            console.log(addr)
             Interceptor.attach(addr, {
 
                 onEnter: function (args) {
 
-                    if (FILTER_REPEAT_THIS) {
-                        if (printedThis[name] === args[0].toString())
-                            return;
-                        printedThis[name] = args[0].toString();
-                    }
+//                    if (FILTER_REPEAT_THIS) {
+//                        if (printedThis[name] === args[0].toString())
+//                            return;
+//                        printedThis[name] = args[0].toString();
+//                    }
 
                     console.log("\n======== " + name + " ========");
                     console.log("this:", args[0]);
 
-                    if (PRINT_STACK) {
-                        console.log(
-                            Thread.backtrace(this.context, Backtracer.ACCURATE)
-                                .map(DebugSymbol.fromAddress)
-                                .join("\n")
-                        );
-                    }
+//                    if (PRINT_STACK) {
+//                        console.log(
+//                            Thread.backtrace(this.context, Backtracer.ACCURATE)
+//                                .map(DebugSymbol.fromAddress)
+//                                .join("\n")
+//                        );
+//                    }
 
                     console.log("================================");
                 }
@@ -182,7 +182,7 @@ setImmediate(function () {
         ["Game_TryFormNewLinks", 0x99b51c],
         ["Game_FindConnectedGroups", 0x99dd68],
         ["Game_CalculateLink", 0x9a69a4],
-        ["Game_HandleLinkResult", 0x984094],
+//        ["Game_HandleLinkResult", 0x984094],
         ["Game_HandleGameCompleteWithFlipAnimation", 0x985948],
 
         // 统计上报

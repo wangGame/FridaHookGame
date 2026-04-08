@@ -21,7 +21,7 @@ while True:
 
 print("[*] Attached!")
 
-with open("Track.js", "r", encoding="utf-8") as f:
+with open("Track.ts", "r", encoding="utf-8") as f:
     script_code = f.read()
 
 script = session.create_script(script_code)

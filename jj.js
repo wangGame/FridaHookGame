@@ -1,40 +1,81 @@
 📦
-1297 /stalker/unity/Track.js.map
-1148 /stalker/unity/Track.js
+1604 /jjjj.js.map
+2354 /jjjj.js
 158176 /node_modules/frida-il2cpp-bridge/dist/index.js
 ↻ frida-il2cpp-bridge
 ✄
-{"version":3,"file":"Track.js","sourceRoot":"D:/Hook/HookLearn/","sources":["stalker/unity/Track.ts"],"names":[],"mappings":"AAAA,OAAO,qBAAqB,CAAC;AAC7B,OAAO,qBAAqB,CAAC;AAE7B,MAAM,CAAC,OAAO,CAAC,GAAG,EAAE;IAEhB,MAAM,KAAK,GAAG,MAAM,CAAC,MAAM;SACtB,QAAQ,CAAC,kCAAkC,CAAC;SAC5C,KAAK;SACL,KAAK,CAAC,4BAA4B,CAAC,CAAC;IAEzC,OAAO,CAAC,GAAG,CAAC,yBAAyB,EAAE,KAAK,CAAC,CAAC;IAE9C,CAAC,MAAM,EAAE,MAAM,EAAE,MAAM,CAAC,CAAC,OAAO,CAAC,IAAI,CAAC,EAAE;QAEpC,MAAM,CAAC,GAAG,KAAK,CAAC,OAAO,CAAC,IAAI,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,IAAI,KAAK,IAAI,CAAC,CAAC;QAEnD,IAAI,CAAC,CAAC,EAAE;YACJ,OAAO,CAAC,GAAG,CAAC,SAAS,EAAE,IAAI,CAAC,CAAC;YAC7B,OAAO;SACV;QAED,OAAO,CAAC,GAAG,CAAC,QAAQ,IAAI,IAAI,EAAE,CAAC,CAAC,cAAc,CAAC,CAAC;QAEhD,WAAW,CAAC,MAAM,CAAC,CAAC,CAAC,cAAc,EAAE;YACjC,OAAO,CAAC,IAAI;gBAER,IAAI;oBACA,MAAM,EAAE,GAAG,IAAI,MAAM,CAAC,MAAM,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC,CAAC;oBACtC,MAAM,OAAO,GAAG,EAAE,CAAC,MAAM,CAAC,UAAU,CAAC,CAAC,MAAM,EAAE,CAAC;oBAE/C,OAAO,CAAC,GAAG,CAAC,cAAc,OAAO,EAAE,CAAC,CAAC;iBACxC;gBAAC,OAAO,CAAC,EAAE,GAAE;gBAEd,OAAO,CAAC,GAAG,CAAC,qBAAqB,IAAI,EAAE,CAAC,CAAC;gBAEzC,OAAO,CAAC,GAAG,CACP,MAAM,CAAC,SAAS,CAAC,IAAI,CAAC,OAAO,EAAE,UAAU,CAAC,QAAQ,CAAC;qBAC9C,GAAG,CAAC,WAAW,CAAC,WAAW,CAAC;qBAC5B,IAAI,CAAC,IAAI,CAAC,CAClB,CAAC;YACN,CAAC;SACJ,CAAC,CAAC;IACP,CAAC,CAAC,CAAC;AAEP,CAAC,CAAC,CAAC"}
+{"version":3,"file":"jjjj.js","sourceRoot":"D:/Hook/HookLearn/","sources":["jjjj.ts"],"names":[],"mappings":"AAAA,OAAO,qBAAqB,CAAC;AAC7B,+BAA+B;AAC/B,4DAA4D;AAC5D,iBAAiB;AACjB,sCAAsC;AACtC,EAAE;AACF,2CAA2C;AAC3C,EAAE;AACF,oDAAoD;AACpD,EAAE;AACF,kDAAkD;AAClD,qCAAqC;AACrC,4CAA4C;AAC5C,8CAA8C;AAC9C,YAAY;AACZ,UAAU;AACV,MAAM;AAEN,yBAAyB;AACzB,8CAA8C;AAC9C,+BAA+B;AAC/B,UAAU;AACV,MAAM;AAEN,yBAAyB;AACzB,gDAAgD;AAChD,gDAAgD;AAChD,EAAE;AACF,mBAAmB;AACnB,iDAAiD;AACjD,cAAc;AACd,IAAI;AACJ,EAAE;AACF,gCAAgC;AAChC,EAAE;AACF,sIAAsI;AACtI,EAAE;AACF,MAAM;AAGN,yBAAyB;AACzB,gDAAgD;AAChD,qDAAqD;AACrD,EAAE;AACF,gDAAgD;AAChD,+CAA+C;AAC/C,iDAAiD;AACjD,2DAA2D;AAC3D,yEAAyE;AACzE,YAAY;AACZ,UAAU;AACV,MAAM;AAEN,MAAM,CAAC,OAAO,CAAC,GAAG,EAAE;IAEhB,MAAM,QAAQ,GAAG,MAAM,CAAC,MAAM,CAAC,UAAU;SACpC,IAAI,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,IAAI,KAAK,iBAAiB,CAAE,CAAC;IAE9C,WAAW;IACX,MAAM,KAAK,GAAG,QAAQ,CAAC,KAAK,CAAC,KAAK,CAAC,qBAAqB,CAAC,CAAC;IAE1D,sBAAsB;IACtB,KAAK,CAAC,OAAO,CAAC,OAAO,CAAC,CAAC,CAAC,EAAE;QACtB,IAAI,CAAC,CAAC,IAAI,KAAK,QAAQ,EAAE;YACrB,OAAO,CAAC,GAAG,CAAC,eAAe,EAAE,CAAC,CAAC,cAAc,EAAE,CAAC,CAAC,cAAc,CAAC,CAAC;SACpE;IACL,CAAC,CAAC,CAAC;IAEH,kBAAkB;IAClB,MAAM,MAAM,GAAG,KAAK,CAAC,OAAO,CAAC,IAAI,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,IAAI,KAAK,QAAQ,CAAE,CAAC;IAE7D,OAAO,CAAC,GAAG,CAAC,gBAAgB,EAAE,MAAM,CAAC,cAAc,CAAC,CAAC;IAErD,WAAW,CAAC,MAAM,CAAC,MAAM,CAAC,cAAc,EAAE;QACtC,OAAO,CAAC,IAAI;YACR,OAAO,CAAC,GAAG,CAAC,mCAAmC,CAAC,CAAC;YACjD,OAAO,CAAC,GAAG,CAAC,QAAQ,EAAE,IAAI,CAAC,CAAC,CAAC,CAAC,CAAC;QACnC,CAAC;QACD,OAAO,CAAC,MAAM;YACV,OAAO,CAAC,GAAG,CAAC,YAAY,CAAC,CAAC;QAC9B,CAAC;KACJ,CAAC,CAAC;AAEP,CAAC,CAAC,CAAC"}
 ✄
 import "frida-il2cpp-bridge";
-import "frida-il2cpp-bridge";
+// Il2Cpp.perform(function () {
+//     var klass = Il2Cpp.domain.assembly("Assembly-CSharp")
+//         .image
+//         .class("Effect_Ribbons_L");
+//
+//     var method = klass.method("Create");
+//
+//     console.log("addr =", method.virtualAddress);
+//
+//     Interceptor.attach(method.virtualAddress, {
+//         onEnter: function (args) {
+//             console.log("Create called");
+//             console.log("this =", args[0]);
+//         }
+//     });
+// });
+// Il2Cpp.perform(() => {
+//     Il2Cpp.domain.assemblies.forEach(a => {
+//         console.log(a.name);
+//     });
+// });
+// Il2Cpp.perform(() => {
+//     const assembly = Il2Cpp.domain.assemblies
+//     .find(a => a.name === "Assembly-CSharp");
+//
+// if (!assembly) {
+//     console.log("Assembly-CSharp not found!");
+//     return;
+// }
+//
+// const image = assembly.image;
+//
+// image.classes.forEach(klass => { if (klass.name.includes("Ribbon") || klass.name.includes("Effect")) { console.log(klass.name); }})
+//
+// });
+// Il2Cpp.perform(() => {
+//     const assembly = Il2Cpp.domain.assemblies
+//         .find(a => a.name === "Assembly-CSharp")!;
+//
+//     assembly.image.classes.forEach(klass => {
+//         if (klass.name.includes("Ribbon")) {
+//             console.log("name =", klass.name);
+//             console.log("namespace =", klass.namespace);
+//             console.log("full =", klass.namespace + "." + klass.name);
+//         }
+//     });
+// });
 Il2Cpp.perform(() => {
-    const klass = Il2Cpp.domain
-        .assembly("UnityEngine.ParticleSystemModule")
-        .image
-        .class("UnityEngine.ParticleSystem");
-    console.log("✅ ParticleSystem class:", klass);
-    ["Play", "Emit", "Stop"].forEach(name => {
-        const m = klass.methods.find(m => m.name === name);
-        if (!m) {
-            console.log("❌ 没有方法:", name);
-            return;
+    const assembly = Il2Cpp.domain.assemblies
+        .find(a => a.name === "Assembly-CSharp");
+    // ✅ 使用完整类名
+    const klass = assembly.image.class("UI.Effect_Ribbons_L");
+    // 🔍 如果不确定是否有重载，可以先打印
+    klass.methods.forEach(m => {
+        if (m.name === "Create") {
+            console.log("Create found:", m.parameterCount, m.virtualAddress);
         }
-        console.log(`Hook ${name} @`, m.virtualAddress);
-        Interceptor.attach(m.virtualAddress, {
-            onEnter(args) {
-                try {
-                    const ps = new Il2Cpp.Object(args[0]);
-                    const nameStr = ps.method("get_name").invoke();
-                    console.log(`\n🎆 粒子触发: ${nameStr}`);
-                }
-                catch (e) { }
-                console.log(`🎯 ParticleSystem.${name}`);
-                console.log(Thread.backtrace(this.context, Backtracer.ACCURATE)
-                    .map(DebugSymbol.fromAddress)
-                    .join("\n"));
-            }
-        });
+    });
+    // 👉 选择正确方法（一般无参）
+    const method = klass.methods.find(m => m.name === "Create");
+    console.log("🎯 hook addr =", method.virtualAddress);
+    Interceptor.attach(method.virtualAddress, {
+        onEnter(args) {
+            console.log("🔥 Effect_Ribbons_L.Create called");
+            console.log("this =", args[0]);
+        },
+        onLeave(retval) {
+            console.log("Create end");
+        }
     });
 });
 ✄
