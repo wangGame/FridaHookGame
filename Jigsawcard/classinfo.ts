@@ -16,10 +16,10 @@ Il2Cpp.perform(() => {
 
             console.log("  [Class] " + klass.name);
 
-            // 遍历方法
-            klass.methods.forEach((method) => {
-                console.log("    -> " + method.name);
-            });
+//             // 遍历方法
+//             klass.methods.forEach((method) => {
+//                 console.log("    -> " + method.name);
+//             });
 
         });
 
