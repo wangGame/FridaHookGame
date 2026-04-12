@@ -156,58 +156,31 @@ import "frida-il2cpp-bridge";
 
 Il2Cpp.perform(() => {
 
-    const Curve = Il2Cpp.domain
-        .assembly("UnityEngine.CoreModule")
+    const klass = Il2Cpp.domain
+        .assembly("DOTween")
         .image
-        .class("UnityEngine.AnimationCurve");
+        .class("DG.Tweening.TweenSettingsExtensions");
 
-    Curve.methods.forEach(m => {
+    const method = klass.method("SetEase");
 
-        const name = m.name;
+    console.log("🎯 SetEase addr:", method.virtualAddress);
 
-        try {
+    Interceptor.attach(method.virtualAddress, {
 
-            // 🎯 核心计算
-            if (name === "Evaluate") {
-                m.implementation = function (...args: any[]) {
+        onEnter(args) {
 
-                    const t = args[0];
-                    const self = this as Il2Cpp.Object;
+            console.log("🔥 SetEase called (native)");
 
-                    const result = m.invoke(self, t);
+            // args[0] = Tween
+            // args[1] = Ease / AnimationCurve / function
 
-                    console.log("🔥 Evaluate:", t, "=>", result);
+            console.log("args0 (tween):", args[0]);
+            console.log("args1 (ease):", args[1]);
 
-                    return result;
-                };
-            }
+        },
 
-            // 🎯 曲线修改
-            if (
-                name.includes("Key") ||
-                name === "set_keys" ||
-                name === "get_keys"
-            ) {
-                m.implementation = function (...args: any[]) {
-
-                    console.log("📊 Curve modify:", name);
-
-                    return m.invoke(this as Il2Cpp.Object, ...args);
-                };
-            }
-
-            // 🎯 构造
-            if (name === ".ctor") {
-                m.implementation = function (...args: any[]) {
-
-                    console.log("🆕 Curve created");
-
-                    return m.invoke(this as Il2Cpp.Object, ...args);
-                };
-            }
-
-        } catch (e) {
-            // 有些方法不能 hook（IL2CPP优化/inline）
+        onLeave(retval) {
+            // SetEase 通常返回 Tween
         }
     });
 
