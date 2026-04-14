@@ -105,7 +105,7 @@ Il2Cpp.perform(() => {
         });
 
     });
-
+       
     send({
         type: "il2cpp_dump",
         data: result

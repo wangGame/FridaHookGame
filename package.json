@@ -4,7 +4,8 @@
   "description": "启动游戏，执行下面操作",
   "main": "agent.js",
   "directories": {
-    "doc": "doc"
+    "doc": "doc",
+    "test": "test"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +13,18 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "frida-il2cpp-bridge": "^0.12.2"
-  }
+  "devDependencies": {
+    "@types/frida-gum": "^19.0.2",
+    "@types/node": "^25.6.0",
+    "frida-compile": "^19.0.5",
+    "frida-il2cpp-bridge": "^0.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangGame/FridaHookGame.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wangGame/FridaHookGame/issues"
+  },
+  "homepage": "https://github.com/wangGame/FridaHookGame#readme"
 }
