@@ -55,7 +55,7 @@ print("attach:", PACKAGE_NAME)
 
 session = device.attach(PACKAGE_NAME)
 
-with open("hook1.js") as f:
+with open("Hook1.js") as f:
     script = session.create_script(f.read())
 
 script.on("message", on_message)

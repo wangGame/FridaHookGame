@@ -43,7 +43,7 @@ def on_message(message, data):  # js中执行send函数后要回调的函数
 rdev = frida.get_usb_device()
 
 attachSession = rdev.attach("经典多米诺")
-with open("resources/js/dominoesjs/HookMethod.js", "r", encoding="utf-8") as f:
+with open("src/resources/js/dominoesjs/HookMethod.js", "r", encoding="utf-8") as f:
     script = attachSession.create_script(f.read())
 
 # with open("dominoesjs/HookMethod.js", "r", encoding="utf-8") as f:
