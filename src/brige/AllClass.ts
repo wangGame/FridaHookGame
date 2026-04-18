@@ -5,13 +5,6 @@ setImmediate(() => {
         console.log("Unity:", Il2Cpp.unityVersion);
         const image = Il2Cpp.domain.assembly("Assembly-CSharp").image;
         console.log("Dumping classes...");
-
-        // Dumping classes...
-        // Found: AnalyzeData
-        // Found: AnalyzeDataFlatBuffersDirect
-        // Found: AnalyzeData
-        // Found: AnalyzeDataVerify
-
         //         image.classes
         //             .filter(c => c.name.includes("AnalyzeData"))
         //             .forEach(c => console.log("Found:", c.name));

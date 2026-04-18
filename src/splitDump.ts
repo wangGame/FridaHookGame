@@ -1,11 +1,8 @@
 import "frida-il2cpp-bridge";
 
 setImmediate(() => {
-
     Il2Cpp.perform(() => {
-
         console.log("[+] IL2CPP ready");
-
         const exported = new Set<string>();
         const targetAssemblies = [
             "mscorlib"  // 只 dump 游戏逻辑
@@ -78,12 +75,8 @@ setImmediate(() => {
             } catch (e) {
                 console.log("[!] Error:", name);
             }
-
         });
-
         send({ type: "done" });
         console.log("[+] Dump finished");
-
     });
-
 });
