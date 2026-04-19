@@ -67,7 +67,7 @@ def main():
     device = frida.get_usb_device(timeout=10)
     session = device.attach(package_name)
 
-    with open("dump_il2cpp.js", "r", encoding="utf-8") as f:
+    with open("s.js", "r", encoding="utf-8") as f:
         script_code = f.read()
 
     script = session.create_script(script_code)

@@ -4,7 +4,7 @@ import sys  # 导入sys模块
 filename = "../resources/js/dominoesjs/HookMult.js"
 # filename = "../resources/js/dominoesjs/test.ts"
 # filename = "../resources/js/dominoesjs/cehnc.js"
-# filename = "../resources/js/xx.js"
+# filename = "../resources/js/xx.js.js"
 # filename = "../resources/js/SkipPurch.js"
 # filename = "../resources/js/activity/PrintAllMethod.js"
 def on_message(message, data):  # js中执行send函数后要回调的函数

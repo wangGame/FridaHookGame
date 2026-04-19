@@ -1,27 +1,4 @@
-import "frida-il2cpp-bridge";
 
-Il2Cpp.perform(() => {
-
-    const image = Il2Cpp.domain.assembly("Assembly-CSharp").image;
-
-    image.classes.forEach(c => {
-
-        c.methods.forEach(m => {
-
-            console.log(
-                c.name,
-                m.name,
-                "VA:",
-                m.virtualAddress,
-                "RVA:",
-                m.relativeVirtualAddress
-            );
-
-        });
-
-    });
-
-});
 // 需要和 frida-il2cpp-bridge.js 放在同目录
 // 用法: frida -H 127.0.0.1:1234 -F -l trace_il2cpp.js
 
