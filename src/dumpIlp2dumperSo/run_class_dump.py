@@ -64,7 +64,7 @@ ASSEMBLIES = [
 ]
 
 PACKAGE_NAME = "jigsawcard"
-JS_FILE = "dump_il2cpp.js"
+JS_FILE = "dump_class_il2cpp.js"
 
 
 TYPE_MAP = {
@@ -154,37 +154,67 @@ def write_ida_script(dump_data, ida_path: Path):
         f.write("import idc\n")
         f.write("import ida_funcs\n")
         f.write("import ida_typeinf\n\n")
+
         f.write("base = idaapi.get_imagebase()\n")
-        f.write("applied = 0\n")
-        f.write("renamed = 0\n\n")
+        f.write("renamed = 0\n")
+        f.write("typed = 0\n")
+        f.write("fields_applied = 0\n\n")
 
         for item in dump_data:
             rva = item.get("rva")
             name = item.get("name")
 
-            if rva is None or name is None:
+            if rva is None or not name:
                 continue
 
             safe_name = escape_name(name)
 
             f.write(f"ea = base + 0x{int(rva):x}\n")
+
             f.write("fn = ida_funcs.get_func(ea)\n")
-            f.write("if not fn:\n")
-            f.write("    pass\n")
-            f.write("else:\n")
+            f.write("if fn:\n")
+
+            # =========================
+            # 1. rename function
+            # =========================
             f.write(f"    if idc.set_name(ea, \"{safe_name}\", idc.SN_NOWARN):\n")
             f.write("        renamed += 1\n")
 
+            # =========================
+            # 2. set prototype
+            # =========================
             proto = build_ida_prototype(item).replace("\\", "\\\\").replace("\"", "\\\"")
+
             f.write("    try:\n")
             f.write(f"        proto = \"{proto}\"\n")
             f.write("        if idc.SetType(ea, proto):\n")
-            f.write("            applied += 1\n")
-            f.write("    except Exception:\n")
-            f.write("        pass\n\n")
+            f.write("            typed += 1\n")
+            f.write("    except:\n")
+            f.write("        pass\n")
+
+            # =========================
+            # 3. fields comment attach
+            # =========================
+            fields = item.get("fields", [])
+
+            if fields:
+                f.write("    # ===== Fields =====\n")
+                for fd in fields:
+                    fname = escape_name(fd.get("name", ""))
+                    ftype = fd.get("type", "")
+                    offset = fd.get("offset", 0)
+
+                    f.write(
+                        f"    # {fname} : {ftype} @0x{int(offset):x}\n"
+                    )
+
+                f.write("    # ==================\n")
+
+            f.write("\n")
 
         f.write("print('[+] renamed =', renamed)\n")
-        f.write("print('[+] prototypes applied =', applied)\n")
+        f.write("print('[+] typed =', typed)\n")
+
 
 def save_dump_result(assembly_name: str, payload: dict):
     out_dir = ROOT_OUTPUT_DIR / safe_dir_name(assembly_name)

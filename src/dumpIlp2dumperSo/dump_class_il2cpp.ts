@@ -5,16 +5,28 @@ type DumpParam = {
     type: string;
 };
 
+type DumpField = {
+    name: string;
+    type: string;
+    isStatic: boolean;
+    offset: number;
+};
+
 type DumpItem = {
     module: string;
     namespace: string;
     class: string;
+
     method: string;
     name: string;
     rva: number;
+
     returnType: string;
     params: DumpParam[];
     isStatic: boolean;
+
+    fields: DumpField[];
+
     assembly: string;
     image: string;
 };
@@ -49,7 +61,6 @@ function errorToString(e: unknown): { error: string; stack: string } {
             stack: e.stack || ""
         };
     }
-
     return {
         error: String(e),
         stack: ""
@@ -58,15 +69,16 @@ function errorToString(e: unknown): { error: string; stack: string } {
 
 rpc.exports = {
     dumpassembly(name: string): Promise<DumpResult> {
-        return new Promise<DumpResult>((resolve) => {
+        return new Promise((resolve) => {
             try {
                 Il2Cpp.perform(() => {
                     try {
                         const result: DumpItem[] = [];
-                        const exported: Set<string> = new Set<string>();
+                        const exported = new Set<string>();
 
-                        const rawName: string = String(name || "").trim();
-                        const candidates: string[] = [...new Set<string>([
+                        const rawName = String(name || "").trim();
+
+                        const candidates = [...new Set([
                             rawName,
                             sanitizeAssemblyName(rawName),
                             rawName + ".dll"
@@ -99,19 +111,48 @@ rpc.exports = {
                         const image = assembly.image;
 
                         image.classes.forEach((c: Il2Cpp.Class) => {
+
+                            // =========================
+                            // 1. Fields dump
+                            // =========================
+                            const fields: DumpField[] = [];
+
+                            try {
+                                c.fields.forEach((f: Il2Cpp.Field) => {
+                                    let typeName = "";
+                                    try {
+                                        typeName = String(f.type?.name ?? "");
+                                    } catch (_) {}
+
+                                    let offset = 0;
+                                    try {
+                                        offset = Number(f.offset ?? 0);
+                                    } catch (_) {}
+
+                                    let isStatic = false;
+                                    try {
+                                        isStatic = !!f.isStatic;
+                                    } catch (_) {}
+
+                                    fields.push({
+                                        name: String(f.name ?? ""),
+                                        type: typeName,
+                                        isStatic,
+                                        offset
+                                    });
+                                });
+                            } catch (_) {}
+
+                            // =========================
+                            // 2. Methods dump
+                            // =========================
                             c.methods.forEach((m: Il2Cpp.Method) => {
                                 try {
                                     if (!m.virtualAddress) return;
 
-                                    const va: NativePointer = m.virtualAddress;
-                                    let module: Module | null = null;
+                                    const va = m.virtualAddress;
 
-                                    try {
-                                        module = Process.findModuleByAddress(va);
-                                    } catch (_) {
-                                        return;
-                                    }
-
+                                    const module = Process.findModuleByAddress(va);
                                     if (!module) return;
 
                                     const key = va.toString();
@@ -148,15 +189,21 @@ rpc.exports = {
                                         module: String(module.name ?? ""),
                                         namespace: String(c.namespace ?? ""),
                                         class: String(c.name ?? ""),
+
                                         method: String(m.name ?? ""),
                                         name: newName,
-                                        rva: parseInt(rva.toString(), 16),
-                                        returnType: String(returnType ?? ""),
+                                        rva: Number(rva),
+
+                                        returnType,
                                         params,
                                         isStatic,
+
+                                        fields,   // ✅ 加在 class 级别
+
                                         assembly: String(image.name ?? ""),
                                         image: String(image.name ?? "")
                                     });
+
                                 } catch (_) {}
                             });
                         });
@@ -164,11 +211,12 @@ rpc.exports = {
                         resolve({
                             ok: true,
                             input: rawName,
-                            usedName: String(usedName ?? ""),
+                            usedName: String(usedName),
                             imageName: String(image.name ?? ""),
                             count: result.length,
                             data: result
                         });
+
                     } catch (e: unknown) {
                         const err = errorToString(e);
                         resolve({

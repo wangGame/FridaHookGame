@@ -1,7 +1,7 @@
 import frida
 import sys
 
-PACKAGE = "com.oakever.jigsawcard"
+PACKAGE = "jigsawcard"
 
 def on_message(message, data):
     if message["type"] == "send":
@@ -13,7 +13,7 @@ print("[*] Connecting USB device...")
 device = frida.get_usb_device(timeout=10)
 
 print("[*] Spawning:", PACKAGE)
-pid = device.spawn([PACKAGE])
+pid = device.attach(PACKAGE)
 
 session = device.attach(pid)
 

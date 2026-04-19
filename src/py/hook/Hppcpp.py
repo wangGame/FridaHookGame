@@ -45,7 +45,7 @@
 # device = frida.get_usb_device(timeout=5)
 # session = device.attach("Jigsawcard")
 #
-# with open("dump_il2cpp.ts", "r", encoding="utf-8") as f:
+# with open("dump_class_il2cpp.ts", "r", encoding="utf-8") as f:
 #     script = session.create_script(f.read())
 #
 # script.on("message", on_message)

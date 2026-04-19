@@ -200,7 +200,7 @@ DEVICE = frida.get_usb_device(timeout=5)
 session = DEVICE.attach("Jigsawcard")
 
 # 2️⃣ 先加载 frida-il2cpp-bridge
-with open("../../resources/js/dump_il2cpp.js", "r", encoding="utf-8") as f:
+with open("../../resources/js/dump_class_il2cpp.js", "r", encoding="utf-8") as f:
     bridge_code = f.read()
 
 bridge = session.create_script(bridge_code)

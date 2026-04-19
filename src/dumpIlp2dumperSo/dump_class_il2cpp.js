@@ -1,10 +1,10 @@
 📦
-4420 /dumpTest/dump_il2cpp.js.map
-6488 /dumpTest/dump_il2cpp.js
-158176 /node_modules/frida-il2cpp-bridge/dist/index.js
+5068 /src/dumpTest/dump_il2cpp.js.map
+7870 /src/dumpTest/dump_il2cpp.js
+160220 /node_modules/frida-il2cpp-bridge/dist/index.js
 ↻ frida-il2cpp-bridge
 ✄
-{"version":3,"file":"dump_il2cpp.js","sourceRoot":"D:/Hook/HookLearn/","sources":["dumpTest/dump_il2cpp.ts"],"names":[],"mappings":"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"}
+{"version":3,"file":"dump_il2cpp.js","sourceRoot":"E:/tool/FridaHookGame/","sources":["src/dumpTest/dump_il2cpp.ts"],"names":[],"mappings":"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"}
 ✄
 import "frida-il2cpp-bridge";
 function sanitizeAssemblyName(name) {
@@ -62,18 +62,45 @@ rpc.exports = {
                         }
                         const image = assembly.image;
                         image.classes.forEach((c) => {
+                            // =========================
+                            // 1. Fields dump
+                            // =========================
+                            const fields = [];
+                            try {
+                                c.fields.forEach((f) => {
+                                    let typeName = "";
+                                    try {
+                                        typeName = String(f.type?.name ?? "");
+                                    }
+                                    catch (_) { }
+                                    let offset = 0;
+                                    try {
+                                        offset = Number(f.offset ?? 0);
+                                    }
+                                    catch (_) { }
+                                    let isStatic = false;
+                                    try {
+                                        isStatic = !!f.isStatic;
+                                    }
+                                    catch (_) { }
+                                    fields.push({
+                                        name: String(f.name ?? ""),
+                                        type: typeName,
+                                        isStatic,
+                                        offset
+                                    });
+                                });
+                            }
+                            catch (_) { }
+                            // =========================
+                            // 2. Methods dump
+                            // =========================
                             c.methods.forEach((m) => {
                                 try {
                                     if (!m.virtualAddress)
                                         return;
                                     const va = m.virtualAddress;
-                                    let module = null;
-                                    try {
-                                        module = Process.findModuleByAddress(va);
-                                    }
-                                    catch (_) {
-                                        return;
-                                    }
+                                    const module = Process.findModuleByAddress(va);
                                     if (!module)
                                         return;
                                     const key = va.toString();
@@ -110,10 +137,11 @@ rpc.exports = {
                                         class: String(c.name ?? ""),
                                         method: String(m.name ?? ""),
                                         name: newName,
-                                        rva: parseInt(rva.toString(), 16),
-                                        returnType: String(returnType ?? ""),
+                                        rva: Number(rva),
+                                        returnType,
                                         params,
                                         isStatic,
+                                        fields,
                                         assembly: String(image.name ?? ""),
                                         image: String(image.name ?? "")
                                     });
@@ -124,7 +152,7 @@ rpc.exports = {
                         resolve({
                             ok: true,
                             input: rawName,
-                            usedName: String(usedName ?? ""),
+                            usedName: String(usedName),
                             imageName: String(image.name ?? ""),
                             count: result.length,
                             data: result
@@ -1464,8 +1492,16 @@ var Il2Cpp;
         // initialization is not completed yet.
         if (Il2Cpp.exports.getCorlib().isNull()) {
             return await new Promise(resolve => {
+                const timeout = setTimeout(() => {
+                    if (!Il2Cpp.exports.getCorlib().isNull()) {
+                        warn(`resuming execution despite IL2CPP initialization not being captured in time, please open an issue as this is suboptimal`);
+                        interceptor.detach();
+                        resolve(false);
+                    }
+                }, 1000);
                 const interceptor = Interceptor.attach(Il2Cpp.exports.initialize, {
                     onLeave() {
+                        clearTimeout(timeout);
                         interceptor.detach();
                         blocking ? resolve(true) : setImmediate(() => resolve(false));
                     }
@@ -1479,8 +1515,8 @@ var Il2Cpp;
         const [moduleName, fallback] = getExpectedModuleNames();
         return (Process.findModuleByName(moduleName) ??
             Process.findModuleByName(fallback ?? moduleName) ??
-            (Process.platform == "darwin" ? Process.findModuleByAddress(DebugSymbol.fromName("il2cpp_init").address) : undefined)
-            ?? undefined);
+            (Process.platform == "darwin" ? Process.findModuleByAddress(DebugSymbol.fromName("il2cpp_init").address) : undefined) ??
+            undefined);
     }
     function getExpectedModuleNames() {
         if (Il2Cpp.$config.moduleName) {
@@ -1496,6 +1532,35 @@ var Il2Cpp;
         }
         raise(`${Process.platform} is not supported yet`);
     }
+})(Il2Cpp || (Il2Cpp = {}));
+var Il2Cpp;
+(function (Il2Cpp) {
+    function nullable(valueOrNull, klass) {
+        const actualClass = typeof valueOrNull == "boolean"
+            ? Il2Cpp.corlib.class("System.Boolean")
+            : typeof valueOrNull == "number"
+                ? (klass ?? Il2Cpp.corlib.class("System.Int32"))
+                : valueOrNull instanceof Int64
+                    ? Il2Cpp.corlib.class("System.Int64")
+                    : valueOrNull instanceof UInt64
+                        ? Il2Cpp.corlib.class("System.UInt64")
+                        : valueOrNull instanceof NativePointer
+                            ? (klass ?? Il2Cpp.corlib.class("System.IntPtr"))
+                            : valueOrNull instanceof Il2Cpp.ValueType
+                                ? valueOrNull.type.class
+                                : (klass ?? raise(`A class must be specified when constructing a nullable for value '${valueOrNull}'`));
+        if (actualClass.isValueType == false) {
+            raise(`Cannot create nullable value type out of a reference type '${actualClass.type.name}'`);
+        }
+        const inflatedClass = Il2Cpp.corlib.class("System.Nullable`1").inflate(actualClass);
+        const struct = new Il2Cpp.ValueType(Memory.alloc(inflatedClass.valueTypeSize), inflatedClass.type);
+        (struct.tryField("hasValue") ?? struct.field("has_value")).value = valueOrNull != null;
+        if (valueOrNull != null) {
+            struct.field("value").value = valueOrNull;
+        }
+        return struct;
+    }
+    Il2Cpp.nullable = nullable;
 })(Il2Cpp || (Il2Cpp = {}));
 var Il2Cpp;
 (function (Il2Cpp) {
@@ -2727,7 +2792,7 @@ var Il2Cpp;
         }
         /** Gets the generic parameters of this generic method. */
         get generics() {
-            if (!this.isGeneric && !this.isInflated) {
+            if (!this.isGeneric) {
                 return [];
             }
             const types = this.object.method("GetGenericArguments").invoke();
@@ -3923,6 +3988,7 @@ var Il2Cpp;
 /// <reference path="./gc.ts">/>
 /// <reference path="./memory.ts">/>
 /// <reference path="./module.ts">/>
+/// <reference path="./nullable.ts">/>
 /// <reference path="./perform.ts">/>
 /// <reference path="./tracer.ts">/>
 /// <reference path="./structs/array.ts">/>
