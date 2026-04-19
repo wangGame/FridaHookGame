@@ -5,7 +5,7 @@ import time
 PACKAGE_NAME = "jigsawcard"
 
 def on_message(message, data):
-    print(message)
+    print(data)
 
 device = frida.get_usb_device(timeout=5)
 
@@ -21,7 +21,7 @@ while True:
 
 print("[*] Attached!")
 
-with open("f.js", "r", encoding="utf-8") as f:
+with open("js/t.js", "r", encoding="utf-8") as f:
     script_code = f.read()
 
 script = session.create_script(script_code)

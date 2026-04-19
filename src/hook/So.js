@@ -93,7 +93,7 @@ function hook_read() {
     onLeave(ret) {
       const r = ret.toInt32();
       if (r <= 0) return;
-
+    console.log("[read]", path, "bytes=", r);
       const path = fdMap[this.fd];
       if (!path) return;
       if (!hasInterestingExt(path)) return;

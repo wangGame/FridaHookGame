@@ -46,7 +46,7 @@ attachSession = rdev.attach("经典多米诺")
 with open("src/resources/js/dominoesjs/HookMethod.js", "r", encoding="utf-8") as f:
     script = attachSession.create_script(f.read())
 
-# with open("dominoesjs/HookMethod.js", "r", encoding="utf-8") as f:
+# with open("dominoesjs/HookViewTree.js", "r", encoding="utf-8") as f:
 #     script = attachxx.create_script(f.read())
 
 script.on('message', on_message)  # 加载回调函数，也就是js中执行send函数规定要执行的python函数
