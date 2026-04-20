@@ -7,7 +7,8 @@ Il2Cpp.perform(() => {
         .image
         .class("UnityEngine.AnimationCurve");
 
-    const Evaluate = AnimationCurve.method("Evaluate");
+    {
+        const Evaluate = AnimationCurve.method("Evaluate");
 
     Evaluate.implementation = function (...args: any[]) {
 
@@ -21,5 +22,27 @@ Il2Cpp.perform(() => {
         console.log("🔥 curve time:", time, "result:", result);
         return result;
     };
+
+    }
+
+
+    {
+        const Evaluate = AnimationCurve.method("Evaluate");
+
+    Evaluate.implementation = function (...args: any[]) {
+
+        const time = args[0];
+
+        const self = this as Il2Cpp.Object;
+
+
+
+      const result = this.method("Evaluate").invoke(time);
+        console.log("🔥 curve time:", time, "result:", result);
+        return result;
+    };
+
+    }
+
 
 });
