@@ -673,12 +673,12 @@ for (let i = 0; i < 512; i++) {   // 512个int = 0x800字节
             console.log(full);
 
 
-//            console.log("📚 Backtrace:");
-//                console.log(
-//                    Thread.backtrace(this.context, Backtracer.ACCURATE)
-//                        .map(DebugSymbol.fromAddress)
-//                        .join("\n")
-//                );
+            console.log("📚 Backtrace:");
+                console.log(
+                    Thread.backtrace(this.context, Backtracer.ACCURATE)
+                        .map(DebugSymbol.fromAddress)
+                        .join("\n")
+                );
           },onLeave(retval){
             console.log("   return =", retval.toInt32());
         }
