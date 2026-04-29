@@ -1,112 +1,121 @@
 📦
-2359 /src/unity/unity/ts/PointMathod.js.map
-3770 /src/unity/unity/ts/PointMathod.js
+2899 /src/Jigsawcard/UnityAnimation.js.map
+3283 /src/Jigsawcard/UnityAnimation.js
 160220 /node_modules/frida-il2cpp-bridge/dist/index.js
 ↻ frida-il2cpp-bridge
 ✄
-{"version":3,"file":"PointMathod.js","sourceRoot":"D:/Hook/HookLearn/","sources":["src/unity/unity/ts/PointMathod.ts"],"names":[],"mappings":"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"}
+{"version":3,"file":"UnityAnimation.js","sourceRoot":"D:/Hook/HookLearn/","sources":["src/Jigsawcard/UnityAnimation.ts"],"names":[],"mappings":"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"}
 ✄
 import "frida-il2cpp-bridge";
 Il2Cpp.perform(() => {
-    const image = Il2Cpp.domain.assembly("Assembly-CSharp").image;
-    const Game = image.class("Game");
-    const method = Game.methods
-        .find((m) => m.name.includes("CalculateShapeMatch"));
-    console.log(`[+] Hook ${Game.name}::${method.name}`);
-    console.log(`[+] VA = ${method.virtualAddress}`);
-    console.log(`[+] Ret = ${method.returnType.name}`);
-    const params = method.parameters ?? [];
-    params.forEach((p, i) => {
-        console.log(`  Param[${i}] ${p.name}: ${p.type.name}`);
-    });
-    Interceptor.attach(method.virtualAddress, {
-        onEnter(args) {
-            console.log("==============================");
-            console.log("[+] Game::CalculateShapeMatch");
-            // native 层：
-            // args[0] = this / static unused
-            // args[1] = 第一个真实 C# 参数
-            // args[2] = MethodInfo*/RuntimeMethod*
-            console.log(`[raw] this/a0      = ${args[0]}`);
-            console.log(`[raw] param0/a1    = ${args[1]}`);
-            console.log(`[raw] methodInfo/a2 = ${args[2]}`);
-            // 先不要 new Il2Cpp.Object(args[1])
-            // 先确认 args[1] 是不是对象指针、int、struct 指针
-        },
-        onLeave(retval) {
-            console.log(`[ret raw] ${retval}`);
-            console.log(`[ret int] ${retval.toInt32()}`);
+    console.log("🔥 DOTween Full Hook Start");
+    // =========================
+    // Ease 解析
+    // =========================
+    function getEaseName(e) {
+        const map = {
+            0: "Unset",
+            1: "Linear",
+            2: "InSine",
+            3: "OutSine",
+            4: "InOutSine",
+            5: "InQuad",
+            6: "OutQuad",
+            7: "InOutQuad",
+            8: "InCubic",
+            9: "OutCubic",
+            10: "InOutCubic",
+            26: "OutBounce"
+        };
+        return map[e] ?? ("Unknown(" + e + ")");
+    }
+    // =========================
+    // AnimationCurve dump
+    // =========================
+    function dumpCurve(curve) {
+        try {
+            const keys = curve.keys;
+            console.log("📈 AnimationCurve:");
+            for (let i = 0; i < keys.length; i++) {
+                const k = keys[i];
+                console.log(`  key[${i}] time=${k.time} value=${k.value} inT=${k.inTangent} outT=${k.outTangent}`);
+            }
+        }
+        catch (e) {
+            console.log("❌ Curve parse failed");
+        }
+    }
+    // =========================
+    // 找 ShortcutExtensions
+    // =========================
+    let klass = null;
+    for (const asm of Il2Cpp.domain.assemblies) {
+        try {
+            klass = asm.image.class("DG.Tweening.ShortcutExtensions");
+            console.log("✅ Found in:", asm.name);
+            break;
+        }
+        catch (e) { }
+    }
+    if (!klass) {
+        console.log("❌ ShortcutExtensions not found");
+        return;
+    }
+    // =========================
+    // Hook 方法
+    // =========================
+    function hook(method) {
+        console.log("🎯 Hook:", method.name);
+        method.implementation = function (...args) {
+            console.log("\n======================");
+            console.log("🔥 DOTween:", method.name);
+            // 打印参数 + 识别曲线
+            for (let i = 0; i < args.length; i++) {
+                const a = args[i];
+                // 👉 Ease（通常是 number）
+                if (typeof a === "number") {
+                    console.log(`arg[${i}] Ease =>`, getEaseName(a));
+                    continue;
+                }
+                // 👉 AnimationCurve
+                if (a && a.keys) {
+                    console.log(`arg[${i}] AnimationCurve detected`);
+                    dumpCurve(a);
+                    continue;
+                }
+                console.log(`arg[${i}] =`, a);
+            }
+            // ⚠️ static method
+            const ret = method.invoke(...args);
+            console.log("======================\n");
+            return ret;
+        };
+    }
+    // =========================
+    // Hook list
+    // =========================
+    const targets = [
+        "DOMove",
+        "DOLocalMove",
+        "DOLocalMoveY",
+        "DORotate",
+        "DOLocalRotate",
+        "DOScale",
+        "DOColor",
+        "DOFade",
+        "DOShakePosition",
+        "DOShakeRotation",
+        "DOShakeScale",
+        "DOPath",
+        "DOLocalPath",
+        "DOKill"
+    ];
+    klass.methods.forEach((m) => {
+        if (targets.includes(m.name)) {
+            hook(m);
         }
     });
 });
-// import "frida-il2cpp-bridge";
-//
-// Il2Cpp.perform(() => {
-//     const image = Il2Cpp.domain.assembly("Assembly-CSharp").image;
-//     const Game = image.class("Game");
-//
-//     const methods: any[] = (Game as any).methods;
-//
-//     methods
-//         .filter(m => m.name.includes("CalculateShapeMatch"))
-//         .forEach(m => {
-//             console.log("==============================");
-//             console.log(`[+] ${Game.name}::${m.name}`);
-//             console.log(`[+] VA: ${m.virtualAddress}`);
-//             console.log(`[+] RVA: ${m.relativeVirtualAddress}`);
-//             console.log(`[+] Static: ${m.isStatic}`);
-//             console.log(`[+] ReturnType: ${m.returnType.name}`);
-//
-//             const params: any[] = (m as any).parameters ?? [];
-//             console.log(`[+] ParamCount: ${params.length}`);
-//
-//             params.forEach((p, i) => {
-//                 console.log(`  Param[${i}] ${p.name}: ${p.type.name}`);
-//             });
-//         });
-// });
-// import "frida-il2cpp-bridge";
-//
-// Il2Cpp.perform(() => {
-//
-//     const klass = Il2Cpp.domain
-//         .assembly("Assembly-CSharp")
-//         .image
-//         .class("Game");
-//
-// //     Il2Cpp.trace(true)
-// //         .assemblies(Il2Cpp.domain.assembly("Assembly-CSharp"))
-// //         .filterMethods(m =>
-// // //             m.name.includes("SmartMatch")
-// // //                 ||m.name.includes("FindConnect")
-// // //                 ||m.name.includes("CalculateShapeMatch")
-// // //                 || m.name.includes("CanFitCompletely")
-// // //                 ||
-// //                 m.name.includes("CalculateShapeMatch")
-// //                 )
-// //         .and()
-// //         .attach();
-//
-//
-//         Il2Cpp.trace(true)
-//             .assemblies(Il2Cpp.domain.assembly("Assembly-CSharp"))
-//             .filterMethods(m => m.name.includes("CalculateShapeMatch")
-//
-//
-//                     )
-//             .and()
-//             .attach();
-//
-// //     Il2Cpp.trace(true)
-// //         .assemblies(Il2Cpp.domain.assembly("Assembly-CSharp"))
-// //         .filterMethods(m => m.name.includes("CalculateBlockPriority")
-// //                 ||m.name.includes("CanFitCompletely")
-// //                 ||m.name.includes("CalculateShapeMatch")
-// //                 )
-// //         .and()
-// //         .attach();
-// });
-//
 ✄
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {

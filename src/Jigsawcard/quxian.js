@@ -1,112 +1,38 @@
 📦
-2359 /src/unity/unity/ts/PointMathod.js.map
-3770 /src/unity/unity/ts/PointMathod.js
+1065 /src/Jigsawcard/quxian.js.map
+932 /src/Jigsawcard/quxian.js
 160220 /node_modules/frida-il2cpp-bridge/dist/index.js
 ↻ frida-il2cpp-bridge
 ✄
-{"version":3,"file":"PointMathod.js","sourceRoot":"D:/Hook/HookLearn/","sources":["src/unity/unity/ts/PointMathod.ts"],"names":[],"mappings":"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"}
+{"version":3,"file":"quxian.js","sourceRoot":"D:/Hook/HookLearn/","sources":["src/Jigsawcard/quxian.ts"],"names":[],"mappings":"AAAA,OAAO,qBAAqB,CAAC;AAE7B,MAAM,CAAC,OAAO,CAAC,GAAG,EAAE;IAEhB,MAAM,cAAc,GAAG,MAAM,CAAC,MAAM;SAC/B,QAAQ,CAAC,wBAAwB,CAAC;SAClC,KAAK;SACL,KAAK,CAAC,4BAA4B,CAAC,CAAC;IAEzC;QACI,MAAM,QAAQ,GAAG,cAAc,CAAC,MAAM,CAAC,UAAU,CAAC,CAAC;QAEvD,QAAQ,CAAC,cAAc,GAAG,UAAU,GAAG,IAAW;YAE9C,MAAM,IAAI,GAAG,IAAI,CAAC,CAAC,CAAC,CAAC;YAErB,MAAM,IAAI,GAAG,IAAqB,CAAC;YAIrC,MAAM,MAAM,GAAG,IAAI,CAAC,MAAM,CAAC,UAAU,CAAC,CAAC,MAAM,CAAC,IAAI,CAAC,CAAC;YAClD,OAAO,CAAC,GAAG,CAAC,gBAAgB,EAAE,IAAI,EAAE,SAAS,EAAE,MAAM,CAAC,CAAC;YACvD,OAAO,MAAM,CAAC;QAClB,CAAC,CAAC;KAED;IAGD;QACI,MAAM,QAAQ,GAAG,cAAc,CAAC,MAAM,CAAC,UAAU,CAAC,CAAC;QAEvD,QAAQ,CAAC,cAAc,GAAG,UAAU,GAAG,IAAW;YAE9C,MAAM,IAAI,GAAG,IAAI,CAAC,CAAC,CAAC,CAAC;YAErB,MAAM,IAAI,GAAG,IAAqB,CAAC;YAIrC,MAAM,MAAM,GAAG,IAAI,CAAC,MAAM,CAAC,UAAU,CAAC,CAAC,MAAM,CAAC,IAAI,CAAC,CAAC;YAClD,OAAO,CAAC,GAAG,CAAC,gBAAgB,EAAE,IAAI,EAAE,SAAS,EAAE,MAAM,CAAC,CAAC;YACvD,OAAO,MAAM,CAAC;QAClB,CAAC,CAAC;KAED;AAGL,CAAC,CAAC,CAAC"}
 ✄
 import "frida-il2cpp-bridge";
 Il2Cpp.perform(() => {
-    const image = Il2Cpp.domain.assembly("Assembly-CSharp").image;
-    const Game = image.class("Game");
-    const method = Game.methods
-        .find((m) => m.name.includes("CalculateShapeMatch"));
-    console.log(`[+] Hook ${Game.name}::${method.name}`);
-    console.log(`[+] VA = ${method.virtualAddress}`);
-    console.log(`[+] Ret = ${method.returnType.name}`);
-    const params = method.parameters ?? [];
-    params.forEach((p, i) => {
-        console.log(`  Param[${i}] ${p.name}: ${p.type.name}`);
-    });
-    Interceptor.attach(method.virtualAddress, {
-        onEnter(args) {
-            console.log("==============================");
-            console.log("[+] Game::CalculateShapeMatch");
-            // native 层：
-            // args[0] = this / static unused
-            // args[1] = 第一个真实 C# 参数
-            // args[2] = MethodInfo*/RuntimeMethod*
-            console.log(`[raw] this/a0      = ${args[0]}`);
-            console.log(`[raw] param0/a1    = ${args[1]}`);
-            console.log(`[raw] methodInfo/a2 = ${args[2]}`);
-            // 先不要 new Il2Cpp.Object(args[1])
-            // 先确认 args[1] 是不是对象指针、int、struct 指针
-        },
-        onLeave(retval) {
-            console.log(`[ret raw] ${retval}`);
-            console.log(`[ret int] ${retval.toInt32()}`);
-        }
-    });
+    const AnimationCurve = Il2Cpp.domain
+        .assembly("UnityEngine.CoreModule")
+        .image
+        .class("UnityEngine.AnimationCurve");
+    {
+        const Evaluate = AnimationCurve.method("Evaluate");
+        Evaluate.implementation = function (...args) {
+            const time = args[0];
+            const self = this;
+            const result = this.method("Evaluate").invoke(time);
+            console.log("🔥 curve time:", time, "result:", result);
+            return result;
+        };
+    }
+    {
+        const Evaluate = AnimationCurve.method("Evaluate");
+        Evaluate.implementation = function (...args) {
+            const time = args[0];
+            const self = this;
+            const result = this.method("Evaluate").invoke(time);
+            console.log("🔥 curve time:", time, "result:", result);
+            return result;
+        };
+    }
 });
-// import "frida-il2cpp-bridge";
-//
-// Il2Cpp.perform(() => {
-//     const image = Il2Cpp.domain.assembly("Assembly-CSharp").image;
-//     const Game = image.class("Game");
-//
-//     const methods: any[] = (Game as any).methods;
-//
-//     methods
-//         .filter(m => m.name.includes("CalculateShapeMatch"))
-//         .forEach(m => {
-//             console.log("==============================");
-//             console.log(`[+] ${Game.name}::${m.name}`);
-//             console.log(`[+] VA: ${m.virtualAddress}`);
-//             console.log(`[+] RVA: ${m.relativeVirtualAddress}`);
-//             console.log(`[+] Static: ${m.isStatic}`);
-//             console.log(`[+] ReturnType: ${m.returnType.name}`);
-//
-//             const params: any[] = (m as any).parameters ?? [];
-//             console.log(`[+] ParamCount: ${params.length}`);
-//
-//             params.forEach((p, i) => {
-//                 console.log(`  Param[${i}] ${p.name}: ${p.type.name}`);
-//             });
-//         });
-// });
-// import "frida-il2cpp-bridge";
-//
-// Il2Cpp.perform(() => {
-//
-//     const klass = Il2Cpp.domain
-//         .assembly("Assembly-CSharp")
-//         .image
-//         .class("Game");
-//
-// //     Il2Cpp.trace(true)
-// //         .assemblies(Il2Cpp.domain.assembly("Assembly-CSharp"))
-// //         .filterMethods(m =>
-// // //             m.name.includes("SmartMatch")
-// // //                 ||m.name.includes("FindConnect")
-// // //                 ||m.name.includes("CalculateShapeMatch")
-// // //                 || m.name.includes("CanFitCompletely")
-// // //                 ||
-// //                 m.name.includes("CalculateShapeMatch")
-// //                 )
-// //         .and()
-// //         .attach();
-//
-//
-//         Il2Cpp.trace(true)
-//             .assemblies(Il2Cpp.domain.assembly("Assembly-CSharp"))
-//             .filterMethods(m => m.name.includes("CalculateShapeMatch")
-//
-//
-//                     )
-//             .and()
-//             .attach();
-//
-// //     Il2Cpp.trace(true)
-// //         .assemblies(Il2Cpp.domain.assembly("Assembly-CSharp"))
-// //         .filterMethods(m => m.name.includes("CalculateBlockPriority")
-// //                 ||m.name.includes("CanFitCompletely")
-// //                 ||m.name.includes("CalculateShapeMatch")
-// //                 )
-// //         .and()
-// //         .attach();
-// });
-//
 ✄
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {

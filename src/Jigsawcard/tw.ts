@@ -151,37 +151,37 @@
 //     };
 //
 // });
-
-import "frida-il2cpp-bridge";
-
-Il2Cpp.perform(() => {
-
-    const klass = Il2Cpp.domain
-        .assembly("DOTween")
-        .image
-        .class("DG.Tweening.TweenSettingsExtensions");
-
-    const method = klass.method("SetEase");
-
-    console.log("🎯 SetEase addr:", method.virtualAddress);
-
-    Interceptor.attach(method.virtualAddress, {
-
-        onEnter(args) {
-
-            console.log("🔥 SetEase called (native)");
-
-            // args[0] = Tween
-            // args[1] = Ease / AnimationCurve / function
-
-            console.log("args0 (tween):", args[0]);
-            console.log("args1 (ease):", args[1]);
-
-        },
-
-        onLeave(retval) {
-            // SetEase 通常返回 Tween
-        }
-    });
-
-});
+//
+// import "frida-il2cpp-bridge";
+//
+// Il2Cpp.perform(() => {
+//
+//     const klass = Il2Cpp.domain
+//         .assembly("DOTween")
+//         .image
+//         .class("DG.Tweening.TweenSettingsExtensions");
+//
+//     const method = klass.method("SetEase");
+//
+//     console.log("🎯 SetEase addr:", method.virtualAddress);
+//
+//     Interceptor.attach(method.virtualAddress, {
+//
+//         onEnter(args) {
+//
+//             console.log("🔥 SetEase called (native)");
+//
+//             // args[0] = Tween
+//             // args[1] = Ease / AnimationCurve / function
+//
+//             console.log("args0 (tween):", args[0]);
+//             console.log("args1 (ease):", args[1]);
+//
+//         },
+//
+//         onLeave(retval) {
+//             // SetEase 通常返回 Tween
+//         }
+//     });
+//
+// });

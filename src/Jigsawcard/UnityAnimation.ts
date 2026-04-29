@@ -112,7 +112,7 @@ Il2Cpp.perform(() => {
     // Hook list
     // =========================
     const targets = [
-        "DOMove",
+//         "DOMove",
         "DOLocalMove",
         "DOLocalMoveY",
         "DORotate",

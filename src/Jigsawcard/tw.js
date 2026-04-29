@@ -1,37 +1,26 @@
 📦
-2490 /Jigsawcard/tw.js.map
-4500 /Jigsawcard/tw.js
+2476 /src/Jigsawcard/tw.js.map
+4498 /src/Jigsawcard/tw.js
 160220 /node_modules/frida-il2cpp-bridge/dist/index.js
 ↻ frida-il2cpp-bridge
 ✄
-{"version":3,"file":"tw.js","sourceRoot":"E:/tool/FridaHookGame/","sources":["Jigsawcard/tw.ts"],"names":[],"mappings":"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"}
+{"version":3,"file":"tw.js","sourceRoot":"D:/Hook/HookLearn/","sources":["src/Jigsawcard/tw.ts"],"names":[],"mappings":"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"}
 ✄
-// import "frida-il2cpp-bridge";
-//
-// Il2Cpp.perform(() => {
-//
-//     const AnimationCurve = Il2Cpp.domain
-//         .assembly("UnityEngine.CoreModule")
-//         .image
-//         .class("UnityEngine.AnimationCurve");
-//
-//     const Evaluate = AnimationCurve.method("Evaluate");
-//
-// Evaluate.implementation = function (...args: any[]) {
-//
-//
-//         const time = args[0] as number;
-//
-//         const self = this as Il2Cpp.Object;
-//
-//         const result = Evaluate.invoke(self, time);
-//
-//         console.log("time:", time, "result:", result);
-//
-//         return result;
-// };
-//
-// });
+import "frida-il2cpp-bridge";
+Il2Cpp.perform(() => {
+    const AnimationCurve = Il2Cpp.domain
+        .assembly("UnityEngine.CoreModule")
+        .image
+        .class("UnityEngine.AnimationCurve");
+    const Evaluate = AnimationCurve.method("Evaluate");
+    Evaluate.implementation = function (...args) {
+        const time = args[0];
+        const self = this;
+        const result = Evaluate.invoke(self, time);
+        console.log("time:", time, "result:", result);
+        return result;
+    };
+});
 // import "frida-il2cpp-bridge";
 //
 // declare const console: any;
@@ -154,27 +143,40 @@
 //     };
 //
 // });
-import "frida-il2cpp-bridge";
-Il2Cpp.perform(() => {
-    const klass = Il2Cpp.domain
-        .assembly("DOTween")
-        .image
-        .class("DG.Tweening.TweenSettingsExtensions");
-    const method = klass.method("SetEase");
-    console.log("🎯 SetEase addr:", method.virtualAddress);
-    Interceptor.attach(method.virtualAddress, {
-        onEnter(args) {
-            console.log("🔥 SetEase called (native)");
-            // args[0] = Tween
-            // args[1] = Ease / AnimationCurve / function
-            console.log("args0 (tween):", args[0]);
-            console.log("args1 (ease):", args[1]);
-        },
-        onLeave(retval) {
-            // SetEase 通常返回 Tween
-        }
-    });
-});
+//
+// import "frida-il2cpp-bridge";
+//
+// Il2Cpp.perform(() => {
+//
+//     const klass = Il2Cpp.domain
+//         .assembly("DOTween")
+//         .image
+//         .class("DG.Tweening.TweenSettingsExtensions");
+//
+//     const method = klass.method("SetEase");
+//
+//     console.log("🎯 SetEase addr:", method.virtualAddress);
+//
+//     Interceptor.attach(method.virtualAddress, {
+//
+//         onEnter(args) {
+//
+//             console.log("🔥 SetEase called (native)");
+//
+//             // args[0] = Tween
+//             // args[1] = Ease / AnimationCurve / function
+//
+//             console.log("args0 (tween):", args[0]);
+//             console.log("args1 (ease):", args[1]);
+//
+//         },
+//
+//         onLeave(retval) {
+//             // SetEase 通常返回 Tween
+//         }
+//     });
+//
+// });
 ✄
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {

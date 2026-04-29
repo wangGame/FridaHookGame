@@ -82,6 +82,7 @@ Il2Cpp.perform(() => {
         console.log("\n==============================");
         console.log("🔥 CalculateBlockPriority");
         console.log("==============================");
+        const k = this.method("CalculateBlockPriority").invoke(...args);
 
         const blocks = args[0];
         const vacantGroups = args[1];
@@ -101,11 +102,10 @@ Il2Cpp.perform(() => {
         } catch (e) {
             console.log("❌ dump error:", e);
         }
-
         // =========================
         // 调用原函数（关键）
         // =========================
-         return this.method("CalculateBlockPriority").invoke(...args);
+         return k;
     };
 
 });
