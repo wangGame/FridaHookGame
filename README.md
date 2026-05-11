@@ -1,5 +1,9 @@
-# frida-getget使用
+# Hook
 
+包含动画、资源、方法、执行流程
+
+
+## frida-getget使用
 
 启动游戏，执行下面操作
 
