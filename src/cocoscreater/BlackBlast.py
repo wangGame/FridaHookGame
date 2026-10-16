@@ -6,12 +6,18 @@ import time
 import threading
 import traceback
 
+from src.cocoscreater.Dump import js_path
+
 # =========================
 # 配置区
 # =========================
 
 process_name = "Block Blast!"
-js_path = r"./js/Hookjs.js"
+# js_path = r"./js/Hookjs.js"
+# js_path = r"./js/logx.js"
+# js_path = r"./js/afClass.js"
+js_path= r"js/jvmGetClass.js"
+# js_path = r"./js/test.js"
 
 out_dir = r"./native_jsb_string_map"
 os.makedirs(out_dir, exist_ok=True)

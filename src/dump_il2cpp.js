@@ -11,9 +11,9 @@ Il2Cpp.perform(() => {
     const result = [];
     const exported = new Set();
     const targetAssemblies = [
-        //        "Assembly-CSharp",
+                "Assembly-CSharp",
         //     "Coffee.UIEffect",
-        "Coffee.UIParticle",
+//        "Coffee.UIParticle",
         //     "DOTween",
         //     "Facebook.Unity.Android",
         //     "Facebook.Unity.Settings",

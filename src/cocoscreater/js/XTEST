@@ -1,0 +1,603 @@
+
+'use strict';
+
+/**
+ * Cocos Creator 埋点完整调用链 hook
+ *
+ * 能抓：
+ * 1. JS 层 jsb.reflection.callStaticMethod / native.reflection.callStaticMethod 调用栈
+ * 2. JS 层 jsbBridgeWrapper.dispatchEventToNative 调用栈
+ * 3. Java 层 a5.b.eventTracking / n / k
+ * 4. Java 层 HSData.hseventTracking
+ * 5. Java 层 AppsFlyerLib.logEvent
+ * 6. Java 反射 Method.invoke
+ * 7. Cocos console.log 里的 __JS_TRACK__ 标记
+ */
+
+const CONFIG = {
+    PRINT_JAVA_STACK: true,
+    PRINT_METHOD_INVOKE: true,
+    PRINT_LIBLOG_JS_TRACK: true,
+    MAX_LEN: 5000
+};
+
+let jsInjected = false;
+
+function cut(s) {
+    if (s === null || s === undefined) return String(s);
+    s = String(s);
+    if (s.length > CONFIG.MAX_LEN) {
+        return s.substring(0, CONFIG.MAX_LEN) + '...<cut>';
+    }
+    return s;
+}
+
+function title(name) {
+    console.log('\n========== ' + name + ' ==========');
+    console.log('time = ' + new Date().toISOString());
+}
+
+function safeToString(obj) {
+    try {
+        if (obj === null || obj === undefined) return 'null';
+        return cut(obj.toString());
+    } catch (e) {
+        return '[toString error] ' + e;
+    }
+}
+
+function isInstanceOf(obj, className) {
+    try {
+        if (obj === null || obj === undefined) return false;
+        const Cls = Java.use(className);
+        return Cls.class.isInstance(obj);
+    } catch (e) {
+        return false;
+    }
+}
+
+function dumpMap(obj) {
+    try {
+        if (obj === null || obj === undefined) return 'null';
+
+        const Map = Java.use('java.util.Map');
+        if (!Map.class.isInstance(obj)) {
+            return '[Not Map] ' + safeToString(obj);
+        }
+
+        const map = Java.cast(obj, Map);
+        const it = map.entrySet().iterator();
+
+        const result = {};
+
+        while (it.hasNext()) {
+            const entry = it.next();
+            const key = entry.getKey();
+            const value = entry.getValue();
+            result[String(key)] = value === null ? null : String(value);
+        }
+
+        return JSON.stringify(result, null, 2);
+    } catch (e) {
+        return '[dumpMap error] ' + e;
+    }
+}
+
+function dumpJsonObject(obj) {
+    try {
+        if (obj === null || obj === undefined) return 'null';
+
+        const JSONObject = Java.use('org.json.JSONObject');
+        if (JSONObject.class.isInstance(obj)) {
+            const jo = Java.cast(obj, JSONObject);
+            try {
+                return jo.toString(2);
+            } catch (e) {
+                return jo.toString();
+            }
+        }
+
+        return '[Not JSONObject] ' + safeToString(obj);
+    } catch (e) {
+        return '[dumpJsonObject error] ' + e;
+    }
+}
+
+function dumpArg(arg) {
+    try {
+        if (arg === null || arg === undefined) return 'null';
+
+        const t = typeof arg;
+        if (t === 'string' || t === 'number' || t === 'boolean') {
+            return String(arg);
+        }
+
+        let clsName = '';
+        try {
+            if (arg.getClass) {
+                clsName = String(arg.getClass().getName());
+            }
+        } catch (e) {}
+
+        if (clsName === 'java.util.HashMap' || isInstanceOf(arg, 'java.util.Map')) {
+            return '[Map ' + clsName + '] ' + dumpMap(arg);
+        }
+
+        if (clsName === 'org.json.JSONObject' || isInstanceOf(arg, 'org.json.JSONObject')) {
+            return '[JSONObject] ' + dumpJsonObject(arg);
+        }
+
+        if (clsName === 'java.lang.String') {
+            return String(arg);
+        }
+
+        if (clsName.length > 0) {
+            return '[' + clsName + '] ' + safeToString(arg);
+        }
+
+        return safeToString(arg);
+    } catch (e) {
+        return '[dumpArg error] ' + e;
+    }
+}
+
+function printJavaStack() {
+    if (!CONFIG.PRINT_JAVA_STACK) return;
+
+    console.log('\n----- Throwable Stack -----');
+
+    try {
+        const Throwable = Java.use('java.lang.Throwable');
+        const Log = Java.use('android.util.Log');
+        console.log(Log.getStackTraceString(Throwable.$new()));
+    } catch (e) {
+        console.log('[Throwable stack error] ' + e);
+    }
+
+    console.log('----- Java.backtrace -----');
+
+    try {
+        const bt = Java.backtrace({
+            limit: 64
+        });
+
+        bt.frames.forEach(function (frame, index) {
+            console.log(
+                '#' + index +
+                ' ' + frame.className +
+                '.' + frame.methodName +
+                ' ' + frame.fileName +
+                ':' + frame.lineNumber
+            );
+        });
+    } catch (e) {
+        console.log('[Java.backtrace error] ' + e);
+    }
+}
+
+function hookMethod(className, methodName, needStack) {
+    try {
+        const Cls = Java.use(className);
+
+        if (!Cls[methodName]) {
+            console.log('[-] no method: ' + className + '.' + methodName);
+            return;
+        }
+
+        Cls[methodName].overloads.forEach(function (ov) {
+            const sig = ov.argumentTypes.map(t => t.className || t.name).join(', ');
+            const retType = ov.returnType.className || ov.returnType.name;
+
+            console.log('[+] hook ' + className + '.' + methodName + '(' + sig + ') => ' + retType);
+
+            ov.implementation = function () {
+                const args = Array.prototype.slice.call(arguments);
+
+                title(className + '.' + methodName);
+                console.log('signature = ' + methodName + '(' + sig + ')');
+
+                for (let i = 0; i < args.length; i++) {
+                    console.log('arg[' + i + '] = ' + dumpArg(args[i]));
+                }
+
+                if (needStack) {
+                    printJavaStack();
+                }
+
+                const ret = ov.call(this, ...args);
+
+                if (retType !== 'void') {
+                    console.log('return = ' + dumpArg(ret));
+                }
+
+                return ret;
+            };
+        });
+    } catch (e) {
+        console.log('[-] hook failed: ' + className + '.' + methodName + ' => ' + e);
+    }
+}
+
+function hookJavaTracking() {
+    // 你当前反编译出来的 AppsFlyer adapter
+    [
+        'eventTracking',
+        'n',
+        'k',
+        'adRevenue',
+        'l',
+        'm'
+    ].forEach(function (m) {
+        hookMethod('a5.b', m, true);
+    });
+
+    // HS 终点
+    hookMethod(
+        'com.block.juggle.datareport.core.api.GlDataManager$HSData',
+        'hseventTracking',
+        true
+    );
+
+    // AppsFlyer 终点
+    hookMethod(
+        'com.appsflyer.AppsFlyerLib',
+        'logEvent',
+        true
+    );
+
+    // ThinkingData 终点
+    hookMethod(
+        'com.block.juggle.datareport.thinkingdata.WThinkingDataAdapter',
+        'eventTracking',
+        true
+    );
+}
+
+function hookMethodInvoke() {
+    if (!CONFIG.PRINT_METHOD_INVOKE) return;
+
+    try {
+        const Method = Java.use('java.lang.reflect.Method');
+
+        const invoke = Method.invoke.overload(
+            'java.lang.Object',
+            '[Ljava.lang.Object;'
+        );
+
+        invoke.implementation = function (receiver, argsArray) {
+            let methodName = '';
+            let clsName = '';
+
+            try {
+                methodName = String(this.getName());
+                clsName = String(this.getDeclaringClass().getName());
+            } catch (e) {}
+
+            const hit =
+                methodName.indexOf('eventTracking') >= 0 ||
+                methodName.indexOf('hseventTracking') >= 0 ||
+                methodName.indexOf('logEvent') >= 0 ||
+                clsName.indexOf('GlDataManager') >= 0 ||
+                clsName.indexOf('ThinkingData') >= 0 ||
+                clsName.indexOf('AppsFlyer') >= 0 ||
+                clsName.indexOf('datareport') >= 0;
+
+            if (hit) {
+                title('java.lang.reflect.Method.invoke');
+                console.log('declaringClass = ' + clsName);
+                console.log('methodName = ' + methodName);
+                console.log('receiver = ' + dumpArg(receiver));
+
+                try {
+                    if (argsArray !== null) {
+                        const len = argsArray.length;
+                        for (let i = 0; i < len; i++) {
+                            console.log('invokeArg[' + i + '] = ' + dumpArg(argsArray[i]));
+                        }
+                    }
+                } catch (e) {
+                    console.log('[argsArray dump error] ' + e);
+                }
+
+                printJavaStack();
+            }
+
+            return invoke.call(this, receiver, argsArray);
+        };
+
+        console.log('[+] hook java.lang.reflect.Method.invoke');
+    } catch (e) {
+        console.log('[-] hook Method.invoke failed: ' + e);
+    }
+}
+
+const JS_INJECT = `
+(function () {
+    if (globalThis.__TRACK_JS_BRIDGE_HOOKED__) {
+        return;
+    }
+
+    globalThis.__TRACK_JS_BRIDGE_HOOKED__ = true;
+
+    function safeString(v) {
+        try {
+            if (v === null) return "null";
+            if (v === undefined) return "undefined";
+            if (typeof v === "string") return v;
+            if (typeof v === "number" || typeof v === "boolean") return String(v);
+            return JSON.stringify(v);
+        } catch (e) {
+            try {
+                return String(v);
+            } catch (e2) {
+                return "[stringify error]";
+            }
+        }
+    }
+
+    function getStack() {
+        try {
+            throw new Error("__JS_STACK__");
+        } catch (e) {
+            return e && e.stack ? String(e.stack) : "[no js stack]";
+        }
+    }
+
+    function printPayload(type, data) {
+        try {
+            data.type = type;
+            data.stack = getStack();
+
+            var text = "__JS_TRACK__" + JSON.stringify(data);
+
+            if (typeof console !== "undefined" && console.log) {
+                console.log(text);
+            }
+        } catch (e) {
+            try {
+                console.log("__JS_TRACK_ERROR__" + e);
+            } catch (e2) {}
+        }
+    }
+
+    function wrapReflection(reflectionObj, name) {
+        try {
+            if (!reflectionObj) return;
+            if (typeof reflectionObj.callStaticMethod !== "function") return;
+            if (reflectionObj.__TRACK_CALLSTATIC_HOOKED__) return;
+
+            reflectionObj.__TRACK_CALLSTATIC_HOOKED__ = true;
+
+            var oldCallStaticMethod = reflectionObj.callStaticMethod;
+
+            reflectionObj.callStaticMethod = function () {
+                var args = Array.prototype.slice.call(arguments);
+
+                var className = args.length > 0 ? safeString(args[0]) : "";
+                var methodName = args.length > 1 ? safeString(args[1]) : "";
+                var signature = args.length > 2 ? safeString(args[2]) : "";
+
+                var joined = args.map(safeString).join(" ");
+
+                var hit =
+                    /datareport/i.test(joined) ||
+                    /AppsFlyer/i.test(joined) ||
+                    /ThinkingData/i.test(joined) ||
+                    /GlDataManager/i.test(joined) ||
+                    /HSData/i.test(joined) ||
+                    /eventTracking/i.test(joined) ||
+                    /hseventTracking/i.test(joined) ||
+                    /logEvent/i.test(joined) ||
+                    /track/i.test(joined) ||
+                    /report/i.test(joined);
+
+                if (hit) {
+                    printPayload(name + ".callStaticMethod", {
+                        className: className,
+                        methodName: methodName,
+                        signature: signature,
+                        args: args.map(safeString)
+                    });
+                }
+
+                return oldCallStaticMethod.apply(this, arguments);
+            };
+
+            console.log("__JS_TRACK_INSTALLED__" + name + ".callStaticMethod");
+        } catch (e) {
+            try {
+                console.log("__JS_TRACK_INSTALL_ERROR__" + name + " " + e);
+            } catch (e2) {}
+        }
+    }
+
+    function wrapBridgeWrapper() {
+        try {
+            var w = globalThis.jsbBridgeWrapper;
+            if (!w) return;
+
+            if (typeof w.dispatchEventToNative === "function" && !w.__TRACK_DISPATCH_NATIVE_HOOKED__) {
+                w.__TRACK_DISPATCH_NATIVE_HOOKED__ = true;
+
+                var oldDispatch = w.dispatchEventToNative;
+
+                w.dispatchEventToNative = function () {
+                    var args = Array.prototype.slice.call(arguments);
+
+                    var joined = args.map(safeString).join(" ");
+
+                    var hit =
+                        /track/i.test(joined) ||
+                        /event/i.test(joined) ||
+                        /report/i.test(joined) ||
+                        /AppsFlyer/i.test(joined) ||
+                        /ThinkingData/i.test(joined) ||
+                        /HSData/i.test(joined);
+
+                    if (hit) {
+                        printPayload("jsbBridgeWrapper.dispatchEventToNative", {
+                            args: args.map(safeString)
+                        });
+                    }
+
+                    return oldDispatch.apply(this, arguments);
+                };
+
+                console.log("__JS_TRACK_INSTALLED__jsbBridgeWrapper.dispatchEventToNative");
+            }
+        } catch (e) {
+            try {
+                console.log("__JS_TRACK_INSTALL_ERROR__jsbBridgeWrapper " + e);
+            } catch (e2) {}
+        }
+    }
+
+    try {
+        if (globalThis.jsb && globalThis.jsb.reflection) {
+            wrapReflection(globalThis.jsb.reflection, "jsb.reflection");
+        }
+    } catch (e) {}
+
+    try {
+        if (globalThis.native && globalThis.native.reflection) {
+            wrapReflection(globalThis.native.reflection, "native.reflection");
+        }
+    } catch (e) {}
+
+    wrapBridgeWrapper();
+
+    console.log("__JS_TRACK_READY__Cocos JS bridge hook installed");
+})();
+`;
+
+function hookEvalStringInject() {
+    const candidates = [
+        'org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge',
+        'com.cocos.lib.CocosJavascriptJavaBridge',
+        'com.cocos.lib.CocosJavascriptJavaBridgeHelper'
+    ];
+
+    candidates.forEach(function (clsName) {
+        try {
+            const Cls = Java.use(clsName);
+
+            if (!Cls.evalString) {
+                return;
+            }
+
+            Cls.evalString.overloads.forEach(function (ov) {
+                const sig = ov.argumentTypes.map(t => t.className || t.name).join(', ');
+
+                if (sig !== 'java.lang.String') {
+                    return;
+                }
+
+                console.log('[+] hook JS evalString injector: ' + clsName + '.evalString(' + sig + ')');
+
+                ov.implementation = function (script) {
+                    const ret = ov.call(this, script);
+
+                    if (!jsInjected) {
+                        jsInjected = true;
+
+                        try {
+                            console.log('[*] injecting JS bridge hook by ' + clsName + '.evalString');
+                            ov.call(this, JS_INJECT);
+                        } catch (e) {
+                            console.log('[-] inject JS failed: ' + e);
+                        }
+                    }
+
+                    return ret;
+                };
+            });
+
+            // 延迟主动注入一次。有些游戏启动后不一定会再调 evalString。
+            setTimeout(function () {
+                if (jsInjected) return;
+
+                try {
+                    console.log('[*] delayed inject JS bridge hook by ' + clsName);
+                    Cls.evalString(JS_INJECT);
+                    jsInjected = true;
+                } catch (e) {
+                    console.log('[-] delayed inject failed: ' + clsName + ' => ' + e);
+                }
+            }, 5000);
+
+        } catch (e) {
+            // 类不存在正常，不打印太多
+        }
+    });
+}
+
+function safeReadCString(p) {
+    try {
+        if (!p || p.isNull()) return '';
+        return p.readCString() || '';
+    } catch (e) {
+        return '';
+    }
+}
+
+function hookLibLogForJsTrack() {
+    if (!CONFIG.PRINT_LIBLOG_JS_TRACK) return;
+
+    const targets = [
+        '__android_log_write',
+        '__android_log_buf_write',
+        '__android_log_print'
+    ];
+
+    targets.forEach(function (name) {
+        const addr = Module.findExportByName('liblog.so', name);
+        if (!addr) return;
+
+        console.log('[+] hook liblog ' + name + ' => ' + addr);
+
+        Interceptor.attach(addr, {
+            onEnter(args) {
+                try {
+                    let tag = '';
+                    let text = '';
+
+                    if (name === '__android_log_write') {
+                        tag = safeReadCString(args[1]);
+                        text = safeReadCString(args[2]);
+                    } else if (name === '__android_log_buf_write') {
+                        tag = safeReadCString(args[2]);
+                        text = safeReadCString(args[3]);
+                    } else if (name === '__android_log_print') {
+                        tag = safeReadCString(args[1]);
+                        text = safeReadCString(args[2]);
+                    }
+
+                    if (
+                        text.indexOf('__JS_TRACK__') >= 0 ||
+                        text.indexOf('__JS_TRACK_READY__') >= 0 ||
+                        text.indexOf('__JS_TRACK_INSTALLED__') >= 0 ||
+                        text.indexOf('__JS_TRACK_ERROR__') >= 0
+                    ) {
+                        title('Cocos JS Stack From Logcat');
+                        console.log('tag = ' + tag);
+                        console.log(cut(text));
+                    }
+                } catch (e) {}
+            }
+        });
+    });
+}
+
+Java.perform(function () {
+    console.log('========== COCOS FULL CHAIN HOOK START ==========');
+
+    hookLibLogForJsTrack();
+
+    hookJavaTracking();
+
+    hookMethodInvoke();
+
+    hookEvalStringInject();
+
+    console.log('========== COCOS FULL CHAIN HOOK READY ==========');
+});

@@ -199,6 +199,22 @@ const HOOKS = [
 //            console.log("   return =", retval.readPointer());
 //        }
 //    },
+{
+    name: "Level::robotDrawCard",
+    symbol: "_ZN5Level13robotDrawCardEv",
+
+    onEnter(args) {
+        this.level = args[0];
+
+        console.log("\n🤖 Level::robotDrawCard ENTER");
+        console.log("   Level =", this.level);
+    },
+
+    onLeave(retval) {
+        console.log("🤖 Level::robotDrawCard LEAVE");
+        console.log("   canPlay =", retval.toInt32());
+    }
+},
     {
         name: "LevelBase::levelStartStatistics",
         symbol: "_ZN9LevelBase20levelStartStatisticsEv",
@@ -224,19 +240,486 @@ const HOOKS = [
             console.log("   return =", retval.toInt32());
         }
     },
-//
-//{
-//        name: "Level::_ZN8CardDataC2ERKS_",
-//        symbol: "_ZN8CardDataC2ERKS_",
-//        onEnter(args) {
-//            console.log("\n🎯 Level::_ZN8CardDataC2ERKS_ ENTER");
-//            console.log("   this =", args[0]);
-//        },
-//        onLeave(retval) {
-//            console.log("🎯 Level::_ZN8CardDataC2ERKS_ LEAVE");
-//            console.log("   return =", retval.toInt32());
-//        }
-//    },
+
+    {
+        name: "UIGame::startRobotRound",
+        symbol: "_ZN6UIGame15startRobotRoundEv",
+
+        onEnter(args) {
+            robotRoundNumber++;
+
+            console.log(
+                "\n\n========== 🤖 ROBOT ROUND #" +
+                robotRoundNumber +
+                " =========="
+            );
+
+            console.log("🎯 UIGame::startRobotRound ENTER");
+            console.log("   this =", args[0]);
+        },
+
+        onLeave(retval) {
+            console.log("🎯 UIGame::startRobotRound LEAVE");
+        }
+    },
+
+    {
+        name: "Level::robotDrawCard",
+        symbol: "_ZN5Level13robotDrawCardEv",
+
+        onEnter(args) {
+            console.log("\n🔍 Level::robotDrawCard ENTER");
+            console.log("   Level =", args[0]);
+
+            // 该函数没有参数，不要读取args[1]
+        },
+
+        onLeave(retval) {
+            console.log("🔍 Level::robotDrawCard LEAVE");
+            console.log("   result =", retval.toInt32());
+        }
+    },
+
+    {
+        name: "Level::getRobotPlayAHandInfo",
+        symbol: "_ZN5Level21getRobotPlayAHandInfoEv",
+
+        onEnter(args) {
+            console.log(
+                "\n🧠 Level::getRobotPlayAHandInfo ENTER"
+            );
+
+            console.log("   Level =", args[0]);
+
+            /*
+             * ARM64下PlayInfo通过x8指向的隐藏返回区域返回。
+             * PlayInfo推测为：
+             *
+             * struct PlayInfo {
+             *     int cardIndex;
+             *     int direction;
+             * };
+             */
+            this.resultPointer = this.context.x8;
+
+            console.log(
+                "   resultPointer =",
+                this.resultPointer
+            );
+        },
+
+        onLeave(retval) {
+            console.log(
+                "🧠 Level::getRobotPlayAHandInfo LEAVE"
+            );
+
+            try {
+                if (
+                    this.resultPointer !== null &&
+                    !this.resultPointer.isNull()
+                ) {
+                    const cardIndex =
+                        this.resultPointer.readS32();
+
+                    const direction =
+                        this.resultPointer.add(4).readS32();
+
+                    console.log(
+                        "   cardIndex =",
+                        cardIndex
+                    );
+
+                    console.log(
+                        "   direction =",
+                        direction
+                    );
+
+                    if (cardIndex < 0) {
+                        console.log(
+                            "   ❌ 当前没有合法出牌"
+                        );
+                    } else {
+                        console.log(
+                            "   ✅ 找到合法出牌"
+                        );
+                    }
+                }
+            } catch (e) {
+                console.log(
+                    "   读取PlayInfo失败：",
+                    e
+                );
+            }
+        }
+    },
+
+    {
+        name: "Level::robotDrawNoCard",
+        symbol: "_ZN5Level15robotDrawNoCardEv",
+
+        onEnter(args) {
+            console.log(
+                "\n🚫 Level::robotDrawNoCard ENTER"
+            );
+
+            console.log("   Level =", args[0]);
+        },
+
+        onLeave(retval) {
+            const result = retval.toInt32();
+
+            console.log(
+                "🚫 Level::robotDrawNoCard LEAVE"
+            );
+
+            console.log("   result =", result);
+
+            if (result >= 5) {
+                console.log(
+                    "   进入特殊无牌抽取分支"
+                );
+            }
+        }
+    },
+
+    {
+        name: "LevelBase::hasPoolAndHandCrad",
+        symbol: "_ZN9LevelBase18hasPoolAndHandCradEb",
+
+        onEnter(args) {
+            this.flag = args[1].toInt32() !== 0;
+
+            console.log(
+                "\n📦 LevelBase::hasPoolAndHandCrad ENTER"
+            );
+
+            console.log("   Level =", args[0]);
+            console.log("   flag  =", this.flag);
+        },
+
+        onLeave(retval) {
+            const result =
+                retval.toInt32() !== 0;
+
+            console.log(
+                "📦 LevelBase::hasPoolAndHandCrad LEAVE"
+            );
+
+            console.log(
+                "   hasPoolAndHandCard =",
+                result
+            );
+
+            if (!result) {
+                console.log(
+                    "   ⚠️ 牌堆或手牌条件不允许继续抽牌"
+                );
+            }
+        }
+    },
+
+    {
+        name: "UIGame::lottoNoCard",
+        symbol: "_ZN6UIGame11lottoNoCardEb",
+
+        onEnter(args) {
+            console.log(
+                "\n🚫 UIGame::lottoNoCard ENTER"
+            );
+
+            console.log("   UIGame =", args[0]);
+            console.log(
+                "   flag   =",
+                args[1].toInt32() !== 0
+            );
+        },
+
+        onLeave(retval) {
+            console.log(
+                "🚫 UIGame::lottoNoCard LEAVE"
+            );
+        }
+    },
+
+    {
+        name: "UIGame::lottoCard",
+        symbol: "_ZN6UIGame9lottoCardEbb",
+
+        onEnter(args) {
+            robotDrawNumber++;
+
+            console.log(
+                "\n\n---------- 🀄 DRAW #" +
+                robotDrawNumber +
+                " ----------"
+            );
+
+            console.log(
+                "🎰 UIGame::lottoCard ENTER"
+            );
+
+            console.log("   UIGame =", args[0]);
+            console.log(
+                "   arg1   =",
+                args[1].toInt32() !== 0
+            );
+            console.log(
+                "   arg2   =",
+                args[2].toInt32() !== 0
+            );
+        },
+
+        onLeave(retval) {
+            console.log(
+                "🎰 UIGame::lottoCard LEAVE"
+            );
+        }
+    },
+
+    {
+        name: "Level::drawACardLogic",
+        symbol: "_ZN5Level14drawACardLogicEbi",
+
+        onEnter(args) {
+            console.log(
+                "\n🎲 Level::drawACardLogic ENTER"
+            );
+
+            console.log("   Level    =", args[0]);
+            console.log(
+                "   isPlayer =",
+                args[1].toInt32() !== 0
+            );
+            console.log(
+                "   input    =",
+                args[2].toInt32()
+            );
+        },
+
+        onLeave(retval) {
+            const poolIndex = retval.toInt32();
+
+            console.log(
+                "🎲 Level::drawACardLogic LEAVE"
+            );
+
+            console.log(
+                "   selectedPoolIndex =",
+                poolIndex
+            );
+
+            if (poolIndex < 0) {
+                console.log(
+                    "   ❌ 没有可以抽取的牌"
+                );
+            } else {
+                console.log(
+                    "   ✅ 从牌堆选择下标",
+                    poolIndex
+                );
+            }
+        }
+    },
+
+    {
+        name: "Level::calcDrawACardOdds",
+        symbol: "_ZN5Level17calcDrawACardOddsEb",
+
+        onEnter(args) {
+            console.log(
+                "\n📊 Level::calcDrawACardOdds ENTER"
+            );
+
+            console.log("   Level =", args[0]);
+            console.log(
+                "   isPlayer =",
+                args[1].toInt32() !== 0
+            );
+        },
+
+        onLeave(retval) {
+            console.log(
+                "📊 Level::calcDrawACardOdds LEAVE"
+            );
+
+            console.log(
+                "   oddsResult =",
+                retval.toInt32()
+            );
+        }
+    },
+
+    {
+        name: "Level::robotDrawLogic",
+        symbol: "_ZN5Level14robotDrawLogicEv",
+
+        onEnter(args) {
+            console.log(
+                "\n🎯 Level::robotDrawLogic ENTER"
+            );
+
+            console.log("   Level =", args[0]);
+        },
+
+        onLeave(retval) {
+            const poolIndex = retval.toInt32();
+
+            console.log(
+                "🎯 Level::robotDrawLogic LEAVE"
+            );
+
+            console.log(
+                "   selectedPoolIndex =",
+                poolIndex
+            );
+        }
+    },
+
+    {
+        name: "LevelBase::addHandCard",
+        symbol: "_ZN9LevelBase11addHandCardEbR8CardData",
+
+        onEnter(args) {
+            this.isPlayer =
+                args[1].toInt32() !== 0;
+
+            this.cardData = args[2];
+
+            console.log(
+                "\n✅ LevelBase::addHandCard ENTER"
+            );
+
+            console.log("   Level =", args[0]);
+            console.log(
+                "   isPlayer =",
+                this.isPlayer
+            );
+            console.log(
+                "   owner =",
+                this.isPlayer
+                    ? "真人"
+                    : "机器人"
+            );
+            console.log(
+                "   CardData* =",
+                this.cardData
+            );
+        },
+
+        onLeave(retval) {
+            console.log(
+                "✅ LevelBase::addHandCard LEAVE"
+            );
+
+            console.log(
+                "   newHandIndex =",
+                retval.toInt32()
+            );
+        }
+    },
+
+    {
+        name: "CardData::copyConstructor",
+        symbol: "_ZN8CardDataC2ERKS_",
+
+        onEnter(args) {
+            console.log(
+                "\n🀄 CardData COPY"
+            );
+
+            console.log(
+                "   destination =",
+                args[0]
+            );
+
+            console.log(
+                "   source      =",
+                args[1]
+            );
+        },
+
+        onLeave(retval) {
+            // 构造函数没有返回值，不打印retval
+        }
+    },
+
+    {
+        name: "UIGame::dealCard",
+        symbol: "_ZN6UIGame8dealCardEbib",
+
+        onEnter(args) {
+            console.log(
+                "\n🎴 UIGame::dealCard ENTER"
+            );
+
+            console.log("   UIGame =", args[0]);
+            console.log(
+                "   arg1 =",
+                args[1].toInt32() !== 0
+            );
+            console.log(
+                "   cardIndex =",
+                args[2].toInt32()
+            );
+            console.log(
+                "   arg3 =",
+                args[3].toInt32() !== 0
+            );
+        },
+
+        onLeave(retval) {
+            console.log(
+                "🎴 UIGame::dealCard LEAVE"
+            );
+        }
+    },
+
+    {
+        name: "UIGame::robotPlayHand",
+        symbol: "_ZN6UIGame13robotPlayHandEi10EDirection",
+
+        onEnter(args) {
+            console.log(
+                "\n🚀 UIGame::robotPlayHand ENTER"
+            );
+
+            console.log("   UIGame =", args[0]);
+            console.log(
+                "   cardIndex =",
+                args[1].toInt32()
+            );
+            console.log(
+                "   direction =",
+                args[2].toInt32()
+            );
+        },
+
+        onLeave(retval) {
+            console.log(
+                "🚀 UIGame::robotPlayHand LEAVE"
+            );
+
+            console.log(
+                "========== ROBOT TURN FINISHED ==========\n"
+            );
+
+            // 下一次机器人正式回合重新计数时，
+            // 可以根据你自己的回合事件重置robotDrawNumber。
+        }
+    },
+
+{
+        name: "Level::_ZN8CardDataC2ERKS_",
+        symbol: "_ZN8CardDataC2ERKS_",
+        onEnter(args) {
+            console.log("\n🎯 Level::_ZN8CardDataC2ERKS_ ENTER");
+            console.log("   this =", args[0]);
+        },
+        onLeave(retval) {
+            console.log("🎯 Level::_ZN8CardDataC2ERKS_ LEAVE");
+            console.log("   return =", retval.toInt32());
+        }
+    },
 
 {
         name: "Level::robotPlayAHandPointB",
@@ -414,20 +897,20 @@ for (let i = 0; i < 512; i++) {   // 512个int = 0x800字节
         }
     },
 
-//    {
-//        name: "Statistics::setWinRoundCount",
-//        symbol: "_ZN10Statistics16setWinRoundCountEi",
-//        onEnter(args) {
-//            console.log("\n🎯 Statistics::setWinRoundCount ENTER");
-//            console.log("   this =", args[0]);
-//            console.log("   winRound =", args[1].toInt32());
-//        },
-//        onLeave(retval) {
-//            console.log("🎯 Statistics::setWinRoundCount LEAVE");
-//            console.log("   return =", retval.toInt32());
-//        }
-//    }
-//    ,
+    {
+        name: "Statistics::setWinRoundCount",
+        symbol: "_ZN10Statistics16setWinRoundCountEi",
+        onEnter(args) {
+            console.log("\n🎯 Statistics::setWinRoundCount ENTER");
+            console.log("   this =", args[0]);
+            console.log("   winRound =", args[1].toInt32());
+        },
+        onLeave(retval) {
+            console.log("🎯 Statistics::setWinRoundCount LEAVE");
+            console.log("   return =", retval.toInt32());
+        }
+    }
+    ,
     {
         name: "cocos2d::log",
         symbol: "_ZN7cocos2d3logEPKcz",
@@ -515,7 +998,7 @@ for (let i = 0; i < 512; i++) {   // 512个int = 0x800字节
             console.log("   arg =", args[1]);
         },onLeave(retval) {
             console.log("   original return =", retval.toInt32());
-            retval.replace(5);
+//            retval.replace(5);
             console.log("   patched return  =", retval.toInt32());
         }
     },
@@ -543,17 +1026,17 @@ for (let i = 0; i < 512; i++) {   // 512个int = 0x800字节
             console.log("   arg =", args[1]);
         }
     },
-//     {
-//        name: "Level::calcRobotPointFailOdds",
-//        symbol: "_ZN5Level22calcRobotPointFailOddsEv", // ⚠️ 以你实际符号为准
-//        onEnter(args) {
-//            console.log("\n🎯 calcRobotPointFailOdds ENTER");
-//            console.log("   this =", args[0]);
-//            console.log("   arg =", args[1]);
-//         },onLeave(retval) {
-//            console.log("   return =", retval.toInt32());
-//        }
-//    },
+     {
+        name: "Level::calcRobotPointFailOdds",
+        symbol: "_ZN5Level22calcRobotPointFailOddsEv", // ⚠️ 以你实际符号为准
+        onEnter(args) {
+            console.log("\n🎯 calcRobotPointFailOdds ENTER");
+            console.log("   this =", args[0]);
+            console.log("   arg =", args[1]);
+         },onLeave(retval) {
+            console.log("   return =", retval.toInt32());
+        }
+    },
     {
         name: "Level::calcDrawACardOdds",
         symbol: "_ZN5Level17calcDrawACardOddsEb", // ⚠️ 以你实际符号为准

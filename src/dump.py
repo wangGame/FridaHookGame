@@ -79,7 +79,7 @@ import sys
 import json
 import os
 
-OUTPUT_DIR = r"E:\work\JigsawChaiBao\classInfo\Coffee.UIParticle"
+OUTPUT_DIR = r"E:\work\JigsawChaiBao\classInfo\Assembly-CSharp"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ====== IL2CPP 类型 → IDA C 类型（简易映射，可继续补） ======

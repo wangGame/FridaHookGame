@@ -9,7 +9,7 @@ Il2Cpp.perform(() => {
 
     console.log("[+] Tracing all Game methods");
 
-    Il2Cpp.trace(true)
+    Il2Cpp.trace(false)
         .classes(Game)
         .and()
         .attach();
